@@ -1,0 +1,8 @@
+{
+  "name": "baze-validation-gh-pages",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "normalize-css": "~3.0.1",
+    "baze-validation": "~0.2.0"
+  }
+}

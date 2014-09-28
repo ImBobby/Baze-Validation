@@ -1,0 +1,163 @@
+
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+html {
+    font: 400 14px/1.6em 'Cambria', 'Georgia', serif;
+}
+
+@media screen and (min-width: 48em) {
+
+    html {
+        font-size: 18px;
+    }
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+h1 {
+    font-size: 3.375em;
+    line-height: 0.94814814814814em;
+    margin-bottom: 0.47407407407407em;
+}
+
+h2 {
+    font-size: 2.25em;
+    line-height: 1.06666666666667em;
+    margin-bottom: 0.47407407407407em;
+}
+
+p,
+ol,
+ul,
+hr,
+dl {
+    font-size: 1em;
+    line-height: 1.6em;
+    margin: 0 0 1.6em 0;
+}
+
+dd {
+    margin-bottom: 1.6em;
+}
+
+pre {
+    padding: .8em;
+    margin: 0 0 2.05655526992288em 0;
+    font: 400 0.778em/2.05655526992288em 'Consolas', 'Menlo', monospace;
+    color: #fff;
+    background: #333;
+}
+
+pre code {
+    padding: 0;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: 1em;
+    background: none;
+}
+
+code {
+    display: inline-block;
+    padding: 0 .4em;
+    border-radius: .2em;
+    font-family: 'Consolas', 'Menlo', monospace;
+    font-size: .778em;
+    color: #fff;
+    background: #333;
+}
+
+section {
+    position: relative;
+    margin-bottom: 4.8em;
+}
+
+section:after {
+    position: absolute;
+    top: -webkit-calc(100% + 1.6em);
+    top: calc(100% + 1.6em);
+    left: -webkit-calc(50% - 100px);
+    left: calc(50% - 100px);
+    
+    width: 200px;
+    height: 1px;
+    background: #555;
+    content: '';
+}
+
+.container {
+    width: 95%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.main-header {
+    padding: 4.8em 0;
+    margin-bottom: 1.6em;
+
+    text-align: center;
+    color: #fff;
+    /* Gradient bg from http://uigradients.com/ called Mirage */
+    background: -webkit-linear-gradient(0deg, #16222A 10%, #3A6073 90%);
+    background: linear-gradient(90deg, #16222A 10%, #3A6073 90%);
+}
+
+.heading-anchor {
+    color: #222;
+    text-decoration: none;
+}
+
+.heading-anchor:after {
+    margin-left: .4em;
+    font-size: 14px;
+    color: #999;
+    content: 'Permalink';
+    opacity: 0;
+    -webkit-transition: all 300ms ease;
+            transition: all 300ms ease;
+}
+
+.heading-anchor:hover:after {
+    opacity: 1;
+}
+
+.main-footer {
+    padding: 1.6em;
+    text-align: center;
+    color: #fff;
+    background: -webkit-linear-gradient(0deg, #16222A 10%, #3A6073 90%);
+    background: linear-gradient(90deg, #16222A 10%, #3A6073 90%);
+}
+
+/* Taken from Bootstrap */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+}
