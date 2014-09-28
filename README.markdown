@@ -11,9 +11,12 @@ Install Baze Validation by running
 ```
 bower install baze-validation --save
 ```
-or download from the [project release](https://github.com/ImBobby/Baze-Validation/releases). Then include `baze.validation.js` via script tag.
+or download from the [project release](https://github.com/ImBobby/Baze-Validation/releases). 
+
+Then include jQuery and `baze.validation.js` via script tag.
 
 ```HTML
+<script src="jquery.js"></script>
 <script src="baze.validation.js"></script>
 ```
 
