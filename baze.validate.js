@@ -28,7 +28,7 @@ var BazeValidate = (function ($) {
         fields  = _this.find('[required]'),
         isOK    = true;
 
-    fields.removeClass( options.classError, options.classSuccess );
+    fields.removeClass( options.classError + ' ' + options.classSuccess );
 
     for (var i = fields.length - 1; i >= 0; i--) {
       var curr = fields.eq(i);
