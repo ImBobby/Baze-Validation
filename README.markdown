@@ -37,6 +37,7 @@ Baze Validation expose these APIs
 | `run()`  | Trigger Baze Validation  |
 | `setErrorClass( string )`  | set class name for invalid fields. default: **form-input--error**   |
 | `setSuccessClass( string )`  | set class name for valid fields. default: **form-input--success**   |
+| `setMsgClass( string )`  | set class name for form message. default: **form-msg-error**   |
 
 
 ## How it works
@@ -57,7 +58,7 @@ Baze Validation will listen on form submit event. When a form submit event is tr
 
 
 1. Check for empty fields.
-2. If field is invalid, class `form-input--error` will be added.
+2. If field is invalid, class `form-input--error` will be added. A message will be placed after the field with class `form-msg-error`.
 3. If field is valid, class `form-input--success` will be added.
 
 **Baze validation has no default styling so it is up to you how you want to style it.**
