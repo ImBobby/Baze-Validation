@@ -1,4 +1,6 @@
 
+
+
 * {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -140,7 +142,47 @@ section:after {
     background: linear-gradient(90deg, #16222A 10%, #3A6073 90%);
 }
 
-/* Taken from Bootstrap */
+/* ---------- Button ---------- */
+
+.btn {
+    width: 100%;
+}
+
+/* ---------- Forms ---------- */
+
+[id="example"] {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-row {
+    margin-bottom: .8em;
+}
+
+.form-input {
+    width: 100%;
+    padding: .4em;
+    border: solid 1px #aaa;
+}
+
+/* ---------- Baze Validation ---------- */
+
+.form-input--error {
+    border-color: red;
+    background: rgba(255,0,0,.05);
+}
+
+.form-input--success {
+    border-color: green;
+    background: rgba(0,255,0,.05);
+}
+
+.form-msg-error {
+    font-size: 75%;
+    color: red;
+}
+
+/* ---------- Taken from Bootstrap ---------- */
 .sr-only {
     position: absolute;
     width: 1px;
