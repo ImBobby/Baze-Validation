@@ -3,7 +3,10 @@
 
 > Validate your form with ease using Baze Validation
 
-**Current version validate for empty fields only. More validation such as email and number validation will be added soon.**
+Baze Validation will validate:
+* Empty fields
+* Email format
+* More to come
 
 ## Install
 
