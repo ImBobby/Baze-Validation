@@ -36,13 +36,20 @@ var BazeValidate = (function ($) {
 
   function validateFields( evt ) {
     var _this   = $(this),
+
+        // Required inputs in form
         fields  = _this.find('[required]'),
-        isOK    = true;
+
+        // Flag
+        isOK    = true,
+
+        // Store invalid inputs
+        invalid = [];
 
     resetClass( fields );
     clearMessage( _this );
 
-    for (var i = fields.length - 1; i >= 0; i--) {
+    for (var i = 0; i < fields.length; i++) {
       var curr = fields.eq(i);
 
       if ( curr.val() === '' || curr.val() === null ) {
@@ -55,6 +62,8 @@ var BazeValidate = (function ($) {
 
         curr.addClass( options.classError );
 
+        invalid.push(curr);
+
         isOK = false;
       } else {
         curr
@@ -63,7 +72,12 @@ var BazeValidate = (function ($) {
       }
     }
 
-    if ( !isOK ) evt.preventDefault();
+    if ( !isOK ) {
+      // Set focus to the first invalid input
+      invalid[0].focus();
+      
+      evt.preventDefault();
+    }
   }
 
   function resetClass( elem ) {
