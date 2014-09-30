@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0
+
+* Add email validation
+* Code refactoring
+
 ## 0.3.0
 
 * Set focus to the first invalid input
