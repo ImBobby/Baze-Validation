@@ -8,7 +8,7 @@
 }
 
 html {
-    font: 400 14px/1.6em 'Source Sans Pro', sans-serif;
+    font: 300 14px/1.6em 'Helvetica Neue', 'Helvetica', arial, sans-serif;
 }
 
 @media screen and (min-width: 48em) {
@@ -17,6 +17,10 @@ html {
         font-size: 18px;
     }
 
+}
+
+body {
+    background: #eee;
 }
 
 h1,

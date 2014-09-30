@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/demo.css">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <a href="https://github.com/ImBobby/Baze-Validation">
@@ -30,7 +29,18 @@
 
     <main>
         <div class="container">
-            <p><strong>As per version 0.3.0, Baze Validation only validate if a field is empty but soon more validation will be added such as email and number validation.</strong></p>
+            <section>
+                <h2>TL;DR;</h2>
+
+                <p>Baze Validation will validate:</p>
+
+                <ul>
+                    <li>Blank space value</li>
+                    <li>Empty fields</li>
+                    <li>Email format</li>
+                    <li>More to come...</li>
+                </ul>
+            </section>
 
             <section id="install">
                 <h2>
@@ -56,14 +66,15 @@
                     <a class="heading-anchor" href="#howToUse">How to use</a>
                 </h2>
 
-                <p>Baze Validation will validate any <code>&lt;form&gt;</code> element that has <code>data-baze-validate</code> attribute and <code>required</code> attribute on its children. If both conditions do not match, Baze will not validate the form.</p>
+                <p>Add attribute <code>data-baze-validate</code> to the <code>&lt;form&gt;</code> element and <code>required</code> attribute to each input field that need to be validated.</p>
 
 <pre>
 <code>&lt;form data-baze-validate&gt;
-    &lt;label for="username"&gt;Usernama&lt;/label&gt;
+    &lt;label for="username"&gt;Username&lt;/label&gt;
     &lt;input id="username" type="text" required&gt;
 
-    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input id="email" type="email" required&gt;
 &lt;/form&gt;        
 </code>
 </pre>
@@ -74,6 +85,8 @@
 <code>BazeValidate.run();
 </code>
 </pre>
+
+                <p>Any input fields with attribute <code>required</code>, will be automatically validated for blank space and empty value. Field with input type <code>email</code> will be automatically validated for email format.</p>
             </section>
 
             <section id="howItWorks">
@@ -84,9 +97,9 @@
                 <p>Baze Validation will listen on form submit event. When a form is submitted:</p>
 
                 <ol>
-                    <li>Check for empty fields.</li>
-                    <li>If field is empty, class <strong>form-input--error</strong> will be added. A message will be placed after the field with class <strong>form-msg-error</strong></li>
-                    <li>If field is not empty, class <strong>form-input--success</strong> will be added. No message will be added.</li>
+                    <li>Iterate for each input fields.</li>
+                    <li>If field is invalid, class <strong>form-input--error</strong> will be added. A message will be placed after the field with class <strong>form-msg-error</strong>.</li>
+                    <li>If field is valid, class <strong>form-input--success</strong> will be added. No message will be added.</li>
                 </ol>
 
                 <p>Baze validation has no default styling so it is up to you how you want to style it.</p>
@@ -102,6 +115,9 @@
                 <form id="example" action="index.html" data-baze-validate>
                     <div class="form-row">
                         <input class="form-input" type="text" placeholder="Username" required>
+                    </div>
+                    <div class="form-row">
+                        <input class="form-input" type="email" placeholder="Email" required>
                     </div>
                     <div class="form-row">
                         <input class="form-input" type="password" placeholder="Password" required>
@@ -145,7 +161,9 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/baze.validate.js"></script>
     <script>
-        BazeValidate.run();
+        (function () {
+            BazeValidate.run();
+        })();
     </script>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </body>
