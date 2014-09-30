@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1
+
+* Validate for blank space value
+
 ## 0.4.0
 
 * Add email validation
