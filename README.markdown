@@ -4,19 +4,20 @@
 > Validate your form with ease using Baze Validation
 
 Baze Validation will validate:
+* Blank space value
 * Empty fields
 * Email format
 * More to come
 
 ## Install
 
-Install Baze Validation by running
+You can get the script via bower.
 ```
 bower install baze-validation --save
 ```
-or download from the [project release](https://github.com/ImBobby/Baze-Validation/releases). 
+or download from the [project release](https://github.com/ImBobby/Baze-Validation/releases).
 
-Then include jQuery and `baze.validation.js` via script tag.
+It depends on jQuery so make sure include it after jQuery.
 
 ```HTML
 <script src="jquery.js"></script>
@@ -25,13 +26,37 @@ Then include jQuery and `baze.validation.js` via script tag.
 
 ## How to use
 
-Init the plugin by doing this
+Add attribute `data-baze-validate` to the `<form>` element and `required` attribute to each input field that need to be validated.
+
+```HTML
+<form data-baze-validate>
+    <label for="username">Username</label>
+    <input id="username" type="text" required>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" required>
+</form>
+```
+
+BazeValidate will be exposed to global. Then init the plugin by calling `run` function.
 
 ```Javascript
 BazeValidate.run();
 ```
 
-### API
+Any input fields with `required` attribute, will be automatically validated for blank space and empty value. Field with input type `email` will be automatically validated for email format.
+
+## How it works
+
+Baze Validation will listen on form submit event. When a form is submitted:
+
+1. Iterate for each input fields.
+2. If field is invalid, class **form-input--error** will be added. A message will be placed after the field with class **form-msg-error**.
+3. If field is valid, class **form-input--success** will be added. No message will be added.
+
+Baze validation has no default styling so it is up to you how you want to style it.
+
+## API
 
 Baze Validation expose these APIs
 
@@ -43,25 +68,7 @@ Baze Validation expose these APIs
 | `setMsgClass( string )`  | set class name for form message. default: **form-msg-error**   |
 
 
-## How it works
+## TODO
 
-Baze Validation will validate any `<form>` element that has `data-baze-validate` attribute and `required` attribute on its children. 
-```HTML
-<form data-baze-validate>
-    <label for="username">Username</label>
-    <input id="username" type="text" required>
-    
-    ...
-</form>
-```
-
-**Baze Validation will not validate a form if `data-baze-validate` attribute is not specified and has no `required` attribute on its children.**
-
-Baze Validation will listen on form submit event. When a form submit event is triggered, it will:
-
-
-1. Check for empty fields.
-2. If field is invalid, class `form-input--error` will be added. A message will be placed after the field with class `form-msg-error`.
-3. If field is valid, class `form-input--success` will be added.
-
-**Baze validation has no default styling so it is up to you how you want to style it.**
+[ ] Add number validation
+[ ] Set custom message
