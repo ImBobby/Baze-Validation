@@ -74,9 +74,10 @@ var BazeValidate = (function ($) {
     clearMessage( form );
 
     for ( var i = 0; i < fields.length; i++ ) {
-      var curr = fields.eq(i);
+      var curr    = fields.eq(i),
+          currVal = curr.val();
 
-      if ( curr.val() === '' || curr.val() === null ) {
+      if ( currVal === '' || currVal === null || currVal.trim() === '' ) {
         curr.addClass( options.classError );
 
         addMessage( curr, 'This field is required.' );
