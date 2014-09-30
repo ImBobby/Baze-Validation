@@ -16,9 +16,11 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "README.markdown",
+    "CHANGELOG.markdown"
   ],
   "dependencies": {
-    "jquery": "~2.1.1"
+    "jquery": "~1.11.1"
   }
 }
