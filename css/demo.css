@@ -165,11 +165,23 @@ section:after {
     border: solid 1px #aaa;
 }
 
+.form-input:focus {
+    border-color: #71b7dd;
+    box-shadow: 0 0 5px #71b7dd;
+    outline: none;
+}
+
 /* ---------- Baze Validation ---------- */
 
 .form-input--error {
     border-color: red;
     background: rgba(255,0,0,.05);
+}
+
+.form-input--error:focus {
+    border-color: red;
+    box-shadow: 0 0 5px red;
+    background: #fff;
 }
 
 .form-input--success {
