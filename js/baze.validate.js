@@ -77,7 +77,7 @@ var BazeValidate = (function ($) {
       var curr    = fields.eq(i),
           currVal = curr.val();
 
-      if ( currVal === '' || currVal === null || currVal.trim() === '' ) {
+      if ( currVal === '' || currVal === null || $.trim(currVal) === '' ) {
         curr.addClass( options.classError );
 
         addMessage( curr, 'This field is required.' );
@@ -163,7 +163,7 @@ var BazeValidate = (function ($) {
   function clearMessage( form ) {
     var msg = form.find('.' + options.classMsg);
 
-    if ( !msg.length ) return;
+    // if ( !msg.length ) return;
 
     msg.remove();
   }
