@@ -70,5 +70,5 @@ Baze Validation expose these APIs
 
 ## TODO
 
-[ ] Add number validation
-[ ] Set custom message
+- [ ] Add number validation
+- [ ] Set custom message
