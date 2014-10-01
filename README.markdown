@@ -68,6 +68,10 @@ Baze Validation expose these APIs
 | `setMsgClass( string )`  | set class name for form message. default: **form-msg-error**   |
 
 
+## Browser support
+
+Baze validation has been tested and run very smooth until IE8. Deep condolence if you still have to support IE7 and below.  
+
 ## TODO
 
 - [ ] Add number validation
