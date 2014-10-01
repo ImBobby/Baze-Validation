@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+
+* Add number validation
+
 ## 0.4.2
 
 * Use $.trim() instead of Javascript String trim() to fix IE8 not supporting native trim().
