@@ -1,3 +1,5 @@
+/*! Baze Validation v0.5.0 | (c) 2014 @_bobbylie | https://github.com/ImBobby/Baze-Validation */
+
 var BazeValidate = (function ($) {
 
   var options = {
@@ -58,6 +60,10 @@ var BazeValidate = (function ($) {
 
     if ( !isOK ) evt.preventDefault();
 
+    isOK = validateNumber( _this, invalid );
+
+    if ( !isOK ) evt.preventDefault();
+
     isOK = validateEmail( _this, invalid );
 
     if ( !isOK ) {
@@ -115,6 +121,40 @@ var BazeValidate = (function ($) {
         curr.addClass( options.classError );
 
         addMessage( curr, 'Invalid email address.' );
+
+        invalid.push(curr);
+
+        isOK = false;
+      } else {
+        curr
+          .removeClass( options.classError )
+          .addClass( options.classSuccess );
+      }
+    }
+
+    if ( !isOK ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function validateNumber( form, invalid ) {
+    var fields  = form.find('[type="number"]'),
+        isOK    = true;
+
+    if ( !fields.length ) return;
+
+    resetClass( fields );
+
+    for ( var i = 0; i < fields.length; i++ ) {
+      var curr    = fields.eq(i),
+          currVal = curr.val();
+
+      if ( !$.isNumeric( currVal ) ) {
+        curr.addClass(options.classError);
+
+        addMessage(curr, 'Input must be number');
 
         invalid.push(curr);
 
