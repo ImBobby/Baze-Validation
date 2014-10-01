@@ -7,6 +7,7 @@ Baze Validation will validate:
 * Blank space value
 * Empty fields
 * Email format
+* Numeric value
 * More to come
 
 ## Install
