@@ -38,6 +38,7 @@
                     <li>Blank space value</li>
                     <li>Empty fields</li>
                     <li>Email format</li>
+                    <li>Numeric value</li>
                     <li>More to come...</li>
                 </ul>
             </section>
@@ -86,7 +87,7 @@
 </code>
 </pre>
 
-                <p>Any input fields with <code>required</code> attribute, will be automatically validated for blank space and empty value. Field with input type <code>email</code> will be automatically validated for email format.</p>
+                <p>Any input fields with <code>required</code> attribute, will be automatically validated for blank space and empty value. Field with input type <code>email</code> will be automatically validated for email format and input with type <code>number</code> will be automatically validated for numeric value.</p>
             </section>
 
             <section id="howItWorks">
@@ -118,6 +119,9 @@
                     </div>
                     <div class="form-row">
                         <input class="form-input" type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-row">
+                        <input class="form-input" type="number" placeholder="Age" required>
                     </div>
                     <div class="form-row">
                         <input class="form-input" type="password" placeholder="Password" required>
