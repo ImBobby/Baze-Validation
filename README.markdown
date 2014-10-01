@@ -75,5 +75,5 @@ Baze validation has been tested and run very smooth until IE8. Deep condolence i
 
 ## TODO
 
-- [ ] Add number validation
+- [X] Add number validation
 - [ ] Set custom message
