@@ -102,6 +102,32 @@ section:after {
     content: '';
 }
 
+table {
+    width: 100%;
+    border: solid 1px #ccc;
+    font-size: 80%;
+    background: #fff;
+}
+
+thead {
+    border-bottom: solid 1px #ccc;
+    color: #eee;
+    background: #333;
+}
+
+tbody tr {
+    border-bottom: solid 1px #ccc;
+}
+
+td,
+th {
+    padding: .4em;
+}
+
+td {
+    border-right: solid 1px #ccc;
+}
+
 .container {
     width: 95%;
     max-width: 700px;
@@ -117,6 +143,11 @@ section:after {
     /* Gradient bg from http://uigradients.com/ called Mirage */
     background: -webkit-linear-gradient(0deg, #16222A 10%, #3A6073 90%);
     background: linear-gradient(90deg, #16222A 10%, #3A6073 90%);
+}
+
+.version {
+    font-size: 14px;
+    font-weight: 300;
 }
 
 .heading-anchor {
@@ -171,7 +202,8 @@ section:after {
 
 .form-input:focus {
     border-color: #71b7dd;
-    box-shadow: 0 0 5px #71b7dd;
+    -webkit-box-shadow: 0 0 5px #71b7dd;
+            box-shadow: 0 0 5px #71b7dd;
     outline: none;
 }
 
@@ -184,7 +216,8 @@ section:after {
 
 .form-input--error:focus {
     border-color: red;
-    box-shadow: 0 0 5px red;
+    -webkit-box-shadow: 0 0 5px red;
+            box-shadow: 0 0 5px red;
     background: #fff;
 }
 

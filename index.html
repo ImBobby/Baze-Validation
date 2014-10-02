@@ -20,7 +20,7 @@
 
     <header class="main-header">
         <div class="container">
-            <h1>Baze Validation</h1>
+            <h1>Baze Validation <span class="version">v0.6.0</span></h1>
             <p>Validate your form with ease</p>
             <iframe src="http://ghbtns.com/github-btn.html?user=ImBobby&repo=Baze-Validation&type=watch&count=true"
   allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
@@ -69,6 +69,8 @@
 
                 <p>Add attribute <code>data-baze-validate</code> to the <code>&lt;form&gt;</code> element and <code>required</code> attribute to each input field that need to be validated.</p>
 
+                <p>Any input fields with <code>required</code> attribute, will be automatically validated for blank space and empty value. Field with input type <code>email</code> will be automatically validated for email format and input with type <code>number</code> will be automatically validated for numeric value.</p>
+
 <pre>
 <code>&lt;form data-baze-validate&gt;
     &lt;label for="username"&gt;Username&lt;/label&gt;
@@ -83,11 +85,64 @@
                 <p>Then init the plugin by calling <code>run</code> function.</p>
 
 <pre>
-<code>BazeValidate.run();
+<code>BazeValidate.run( options );
 </code>
 </pre>
+            </section>
 
-                <p>Any input fields with <code>required</code> attribute, will be automatically validated for blank space and empty value. Field with input type <code>email</code> will be automatically validated for email format and input with type <code>number</code> will be automatically validated for numeric value.</p>
+            <section id="options">
+                <h2>
+                    <a class="heading-anchor" href="#options">Options</a>
+                </h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>classError</td>
+                            <td>String</td>
+                            <td>'form-input--error'</td>
+                            <td>Class to be added if input invalid</td>
+                        </tr>
+                        <tr>
+                            <td>classSuccess</td>
+                            <td>String</td>
+                            <td>'form-input--success'</td>
+                            <td>Class to be added if input valid</td>
+                        </tr>
+                        <tr>
+                            <td>classMsg</td>
+                            <td>String</td>
+                            <td>'form-msg-error'</td>
+                            <td>Class to be added to form message</td>
+                        </tr>
+                        <tr>
+                            <td>msgEmpty</td>
+                            <td>String</td>
+                            <td>'This field is required.'</td>
+                            <td>Text to display if input is empty</td>
+                        </tr>
+                        <tr>
+                            <td>msgEmail</td>
+                            <td>String</td>
+                            <td>'Invalid email address.'</td>
+                            <td>Text to display for invalid email address</td>
+                        </tr>
+                        <tr>
+                            <td>msgNumber</td>
+                            <td>String</td>
+                            <td>'Input must be number.'</td>
+                            <td>Text to display if input value is not numeric</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
 
             <section id="howItWorks">
