@@ -5,7 +5,11 @@ var BazeValidate = (function ($) {
   var options = {
     classError  : 'form-input--error',
     classSuccess: 'form-input--success',
-    classMsg    : 'form-msg-error'
+    classMsg    : 'form-msg-error',
+
+    msgEmpty    : 'This field is required.',
+    msgEmail    : 'Invalid email address.',
+    msgNumber   : 'Input must be number.'
   };
 
 
@@ -33,11 +37,16 @@ var BazeValidate = (function ($) {
     return this;
   };
 
-  var run = function () {
-    var forms = $('form[data-baze-validate]');
+  var run = function ( userOpts ) {
+    var forms = $('form[data-baze-validate]'),
+        opts;
 
     if ( !forms.length ) return;
 
+    opts = userOpts || options;
+
+    $.extend(options, userOpts);
+    
     forms
       .attr('novalidate', '')
       .submit( validateFields );
@@ -86,7 +95,7 @@ var BazeValidate = (function ($) {
       if ( currVal === '' || currVal === null || $.trim(currVal) === '' ) {
         curr.addClass( options.classError );
 
-        addMessage( curr, 'This field is required.' );
+        addMessage( curr, options.msgEmpty );
 
         invalid.push(curr);
 
@@ -120,7 +129,7 @@ var BazeValidate = (function ($) {
       if ( !isEmailValid( currVal ) ) {
         curr.addClass( options.classError );
 
-        addMessage( curr, 'Invalid email address.' );
+        addMessage( curr, options.msgEmail );
 
         invalid.push(curr);
 
@@ -154,7 +163,7 @@ var BazeValidate = (function ($) {
       if ( !$.isNumeric( currVal ) ) {
         curr.addClass(options.classError);
 
-        addMessage(curr, 'Input must be number');
+        addMessage(curr, options.msgNumber );
 
         invalid.push(curr);
 
@@ -217,7 +226,8 @@ var BazeValidate = (function ($) {
     run: run,
     setErrorClass: setClassError,
     setSuccessClass: setClassSuccess,
-    setMsgClass: setClassMsg
+    setMsgClass: setClassMsg,
+    opts: options
   };
 
 })(window.jQuery);

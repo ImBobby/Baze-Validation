@@ -39,13 +39,24 @@ Add attribute `data-baze-validate` to the `<form>` element and `required` attrib
 </form>
 ```
 
+Any input fields with `required` attribute, will be automatically validated for blank space and empty value. Field with input type `email` will be automatically validated for email format. Field with input type `email` will be automatically validated for email format and input with type number will be automatically validated for numeric value.
+
 BazeValidate will be exposed to global. Then init the plugin by calling `run` function.
 
 ```Javascript
-BazeValidate.run();
+BazeValidate.run( options );
 ```
 
-Any input fields with `required` attribute, will be automatically validated for blank space and empty value. Field with input type `email` will be automatically validated for email format.
+## Options
+
+| Option  | Type  | Default  | Description  |
+|---|---|---|---|
+| classError  | String  | 'form-input--error'  | Class to be added if input invalid  |
+| classSuccess  | String  | 'form-input--success'  | Class to be added if input valid  |
+| classMsg  | String  | 'form-msg-error'  | Class to be added to form message  |
+| msgEmpty  | String  | 'This field is required.'  | Text to display if input is empty  |
+| msgEmail  | String  | 'Invalid email address.'  | Text to display for invalid email address  |
+| msgNumber  | String  | 'Input must be number.'  | Text to display if input value is not numeric  |
 
 ## How it works
 
@@ -71,9 +82,4 @@ Baze Validation expose these APIs
 
 ## Browser support
 
-Baze validation has been tested and run very smooth until IE8. Deep condolence if you still have to support IE7 and below.  
-
-## TODO
-
-- [ ] Add number validation
-- [ ] Set custom message
+Baze validation has been tested and run very smooth until IE8. Deep condolence if you still have to support IE7 and below.
