@@ -226,8 +226,7 @@ var BazeValidate = (function ($) {
     run: run,
     setErrorClass: setClassError,
     setSuccessClass: setClassSuccess,
-    setMsgClass: setClassMsg,
-    opts: options
+    setMsgClass: setClassMsg
   };
 
 })(window.jQuery);
