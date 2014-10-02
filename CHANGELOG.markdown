@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0
+
+* Set custom message and class via options
+
 ## 0.5.0
 
 * Add number validation
