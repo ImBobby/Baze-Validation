@@ -118,7 +118,7 @@ var BazeValidate = (function ($) {
     var fields  = form.find('[type="email"]'),
         isOK    = true;
 
-    if ( !fields.length ) return;
+    if ( !fields.length ) return isOK;
 
     resetClass( fields );
 
@@ -152,7 +152,7 @@ var BazeValidate = (function ($) {
     var fields  = form.find('[type="number"]'),
         isOK    = true;
 
-    if ( !fields.length ) return;
+    if ( !fields.length ) return isOK;
 
     resetClass( fields );
 
