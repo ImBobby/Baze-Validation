@@ -212,8 +212,6 @@ var BazeValidate = (function ($) {
   function clearMessage( form ) {
     var msg = form.find('.' + options.classMsg);
 
-    // if ( !msg.length ) return;
-
     msg.remove();
   }
 
