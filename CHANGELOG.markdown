@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.1
+
+* Set return value to `true` for each return early validation.
+* remove unused comment.
+
 ## 0.6.0
 
 * Set custom message and class via options
