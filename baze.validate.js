@@ -1,4 +1,4 @@
-/*! Baze Validation v0.6.1 | (c) 2014 @_bobbylie | https://github.com/ImBobby/Baze-Validation */
+/*! Baze Validation v0.7.0 | (c) 2015 @_bobbylie | https://github.com/ImBobby/Baze-Validation */
 
 var BazeValidate = (function ($) {
 

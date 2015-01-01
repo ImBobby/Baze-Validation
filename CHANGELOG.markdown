@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.0
+
+Improve accessibility by adding:
+* `aria-required` to each required field
+* `aria-invalid` to each invalid field and
+* Set unique ID to each error message and reference it by `aria-describedBy` 
+
 ## 0.6.1
 
 * Set return value to `true` for each return early validation.
