@@ -17,27 +17,28 @@
   };
 
   function BazeValidate ( element, userOptions ) {
-    this._elem    = $(element);
-    this._opts    = $.extend({}, defaults, userOptions);
-    this._inputs  = this._elem.find('[required]');
+    plugin          = this;
+    plugin._elem    = $(element);
+    plugin._opts    = $.extend({}, defaults, userOptions);
+    plugin._inputs  = plugin._elem.find('[required]');
 
-    this._setNovalidate();
-    this._registerEvent();
+    plugin._setNovalidate();
+    plugin._registerEvent();
   }
 
   $.extend( BazeValidate.prototype, {
 
     _init: function () {
-      this._setNovalidate();
+      plugin._setNovalidate();
     },
 
     _setNovalidate: function () {
-      this._elem.attr('novalidate', '');
+      plugin._elem.attr('novalidate', '');
     },
 
     _registerEvent: function () {
-      var _this   = this._elem,
-          _opts   = this._opts,
+      var _this   = plugin._elem,
+          _opts   = plugin._opts,
           valid   = true;
 
       _this.submit(function (e) {
