@@ -1,4 +1,4 @@
-/*! Baze Validation v0.5.0 | (c) 2014 @_bobbylie | https://github.com/ImBobby/Baze-Validation */
+/*! Baze Validation v0.7.0 | (c) 2015 @_bobbylie | https://github.com/ImBobby/Baze-Validation */
 
 var BazeValidate = (function ($) {
 
@@ -39,11 +39,16 @@ var BazeValidate = (function ($) {
 
   var run = function ( userOpts ) {
     var forms = $('form[data-baze-validate]'),
+        fields,
         opts;
 
     if ( !forms.length ) return;
 
     opts = userOpts || options;
+
+    fields = forms.find('[required]');
+
+    fields.attr('aria-required', 'true');
 
     $.extend(options, userOpts);
     
@@ -103,6 +108,8 @@ var BazeValidate = (function ($) {
       } else {
         curr
           .removeClass( options.classError )
+          .removeAttr('aria-describedBy')
+          .attr('aria-invalid', 'false')
           .addClass( options.classSuccess );
       }
     }
@@ -118,7 +125,7 @@ var BazeValidate = (function ($) {
     var fields  = form.find('[type="email"]'),
         isOK    = true;
 
-    if ( !fields.length ) return;
+    if ( !fields.length ) return isOK;
 
     resetClass( fields );
 
@@ -137,6 +144,8 @@ var BazeValidate = (function ($) {
       } else {
         curr
           .removeClass( options.classError )
+          .removeAttr('aria-describedBy')
+          .attr('aria-invalid', 'false')
           .addClass( options.classSuccess );
       }
     }
@@ -152,7 +161,7 @@ var BazeValidate = (function ($) {
     var fields  = form.find('[type="number"]'),
         isOK    = true;
 
-    if ( !fields.length ) return;
+    if ( !fields.length ) return isOK;
 
     resetClass( fields );
 
@@ -171,6 +180,8 @@ var BazeValidate = (function ($) {
       } else {
         curr
           .removeClass( options.classError )
+          .removeAttr('aria-describedBy')
+          .attr('aria-invalid', 'false')
           .addClass( options.classSuccess );
       }
     }
@@ -191,6 +202,7 @@ var BazeValidate = (function ($) {
 
   function addMessage ( elem, message ) {
     var exist = elem.parent().find('.' + options.classMsg),
+        ID    = getUID(),
         msg;
     
     if ( exist.length ) {
@@ -199,20 +211,25 @@ var BazeValidate = (function ($) {
       msg = $(document.createElement('span'));
 
       msg
+        .attr('id', ID)
         .addClass( options.classMsg )
         .text( message )
         .insertAfter( elem );
+
+      elem.attr({
+        'aria-describedBy': ID,
+        'aria-invalid': 'true'
+      });
     }
   }
 
   function resetClass( elem ) {
-    elem.removeClass( options.classError + ' ' + options.classSuccess );
+    elem
+      .removeClass( options.classError + ' ' + options.classSuccess );
   }
 
   function clearMessage( form ) {
     var msg = form.find('.' + options.classMsg);
-
-    // if ( !msg.length ) return;
 
     msg.remove();
   }
@@ -220,6 +237,13 @@ var BazeValidate = (function ($) {
   function isEmailValid( email ) {
     // http://badsyntax.co/post/javascript-email-validation-rfc822
     return /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/.test( email );
+  }
+
+  function getUID() {
+    var randInt = Math.floor((new Date).getTime()) + Math.floor((Math.random() * 100));
+    var UID = 'BV' + randInt;
+
+    return UID;
   }
 
   return {
