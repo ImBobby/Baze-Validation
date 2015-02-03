@@ -2,6 +2,15 @@
 
   var pluginName = 'BazeValidate';
 
+  /**
+   * Plugin's default settings
+   * @config {string} classError
+   * @config {string} classSuccess
+   * @config {string} classMsg
+   * @config {string} msgEmpty
+   * @config {string} msgEmail
+   * @config {string} msgNumber
+   */
   var defaults = {
     classError  : 'form-input--error',
     classSuccess: 'form-input--success',
@@ -12,6 +21,11 @@
     msgNumber   : 'Input must be number.'
   };
 
+  /**
+   * Represents the plugin instance
+   * @param {DOM Object} element - The DOM Object
+   * @param {Object} options - User options
+   */
   function Plugin ( element, options ) {
     this.element    = element;
     this.$element   = $(element);
@@ -23,32 +37,51 @@
   }
 
   Plugin.prototype.init = function () {
+    /**
+     * Set novalidate attribute to prevent browser validation
+     */
     this.element.setAttribute('novalidate', '');
+
+    /**
+     * set aria-required attribute to each required inputs
+     */
     this.$element.find('[required]').attr('aria-required', 'true');
 
     var userOpts = this.settings;
 
+    /**
+     * @param {jQuery object} form
+     */
     var clearAllMessages = function ( form ) {
       var msgs = form.find('.' + userOpts.classMsg);
 
       $(msgs).remove();
     };
 
+    /**
+     * @param {jQuery object} field
+     * @param {string} message
+     */
     var addMessage = function ( field, message ) {
-      var hasMsg  = field.parent().find('.' + userOpts.classMsg);
+      var hasMsg  = field.parent().find('.' + userOpts.classMsg),
+          id      = getUID(),
+          msg     = $(document.createElement('span'));
 
+      /**
+       * Remove existing message
+       */
       if ( hasMsg.length ) {
         hasMsg.remove();
       }
-
-      var id      = getUID();
-      var msg     = $(document.createElement('span'));
 
       field.attr({
         'aria-describedBy': id,
         'aria-invalid': 'true'
       });
 
+      /**
+       * Place message after input element
+       */
       msg
         .addClass( userOpts.classMsg )
         .attr('id', id)
@@ -56,6 +89,9 @@
         .insertAfter( field );
     };
 
+    /**
+     * @param {jQuery object} fields
+     */
     var resetFields = function ( fields ) {
       fields
         .removeAttr('aria-invalid aria-describedBy')
@@ -63,6 +99,9 @@
         .removeClass( userOpts.classSuccess );
     };
 
+    /**
+     * @param {jQuery object} fields
+     */
     var validateEmpty = function ( fields ) {
       var allIsWell = true;
 
@@ -83,6 +122,9 @@
       return allIsWell;
     };
 
+    /**
+     * @param {jQuery object} fields
+     */
     var validateEmail = function ( fields ) {
       var allIsWell = true,
           type;
@@ -103,6 +145,9 @@
       return allIsWell;
     };
 
+    /**
+     * @param {jQuery object} fields
+     */
     var validateNumeric = function ( fields ) {
       var allIsWell = true,
           type;
@@ -146,7 +191,7 @@
       if ( !isOK ) {
         evt.preventDefault();
 
-        console.log($this.find('.' + userOpts.classError).eq(0));
+        $this.find('.' + userOpts.classError).eq(0).focus();
       }
     };
 
