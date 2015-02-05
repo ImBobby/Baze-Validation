@@ -168,6 +168,8 @@
           resetFields( $el );
           $el.addClass( userOpts.classInvalid );
           addMessage( $el, userOpts.msgEmail );
+
+          allIsWell = false;
         }
       }
 
