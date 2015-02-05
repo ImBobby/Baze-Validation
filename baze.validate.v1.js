@@ -5,16 +5,16 @@
 
   /**
    * Plugin's default settings
-   * @config {string} classError
-   * @config {string} classSuccess
+   * @config {string} classInvalid
+   * @config {string} classValid
    * @config {string} classMsg
    * @config {string} msgEmpty
    * @config {string} msgEmail
    * @config {string} msgNumber
    */
   var defaults = {
-    classError  : 'form-input--error',
-    classSuccess: 'form-input--success',
+    classInvalid: 'form-input--error',
+    classValid  : 'form-input--success',
     classMsg    : 'form-msg-error',
 
     msgEmpty    : 'This field is required.',
@@ -82,6 +82,10 @@
         hasMsg.remove();
       }
 
+
+      /**
+       * Add aria-describedBy and aria-invalid to invalid field
+       */
       field.attr({
         'aria-describedBy': id,
         'aria-invalid': 'true'
@@ -105,8 +109,8 @@
     var resetFields = function ( fields ) {
       fields
         .removeAttr('aria-invalid aria-describedBy')
-        .removeClass( userOpts.classError )
-        .removeClass( userOpts.classSuccess );
+        .removeClass( userOpts.classInvalid )
+        .removeClass( userOpts.classValid );
     };
 
 
@@ -122,12 +126,12 @@
             value   = $field.val();
 
         if ( value === '' || value === null || $.trim(value) === '' ) {
-          $field.addClass( userOpts.classError );
+          $field.addClass( userOpts.classInvalid );
           addMessage( $field, userOpts.msgEmpty );
 
           allIsWell = false;
         } else {
-          $field.addClass( userOpts.classSuccess );
+          $field.addClass( userOpts.classValid );
         }
       });
 
@@ -146,6 +150,10 @@
         var el    = fields[i],
             $el   = $(el),
             value = el.value,
+
+            /**
+             * el.type return text in IE8, so use getAttribute instead
+             */
             type  = el.getAttribute('type');
 
 
@@ -158,7 +166,7 @@
 
         if ( !isEmailValid( value ) ) {
           resetFields( $el );
-          $el.addClass( userOpts.classError );
+          $el.addClass( userOpts.classInvalid );
           addMessage( $el, userOpts.msgEmail );
         }
       }
@@ -178,6 +186,10 @@
         var el      = fields[i],
             $el     = $(el),
             value   = el.value,
+
+            /**
+             * el.type return text in IE8, so use getAttribute instead
+             */
             type    = el.getAttribute('type'),
             min     = el.getAttribute('min') || false,
             max     = el.getAttribute('max') || false,
@@ -195,7 +207,7 @@
 
         if ( !isNumber( value ) ) {
           resetFields( $el );
-          $el.addClass( userOpts.classError );
+          $el.addClass( userOpts.classInvalid );
           addMessage( $el, userOpts.msgNumber );
 
           allIsWell = false;
@@ -203,14 +215,14 @@
 
           if ( !!min && nValue < nMin ) {
             resetFields( $el );
-            $el.addClass( userOpts.classError );
-            addMessage( $el, userOpts.msgExceedMin );
+            $el.addClass( userOpts.classInvalid );
+            addMessage( $el, vsprintf(userOpts.msgExceedMin, [min]));
 
             allIsWell = false;
           } else if ( !!max && nValue > nMax ) {
             resetFields( $el );
-            $el.addClass( userOpts.classError );
-            addMessage( $el, userOpts.msgExceedMax );
+            $el.addClass( userOpts.classInvalid );
+            addMessage( $el, vsprintf(userOpts.msgExceedMax, [max]));
 
             allIsWell = false;
           }
@@ -244,7 +256,7 @@
       if ( !isOK ) {
         evt.preventDefault();
 
-        $this.find('.' + userOpts.classError).eq(0).focus();
+        $this.find('.' + userOpts.classInvalid).eq(0).focus();
       }
     };
 
