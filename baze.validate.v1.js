@@ -19,7 +19,9 @@
 
     msgEmpty    : 'This field is required.',
     msgEmail    : 'Invalid email address.',
-    msgNumber   : 'Input must be number.'
+    msgNumber   : 'Input must be number.',
+    msgExceedMin: 'Minimum number is %s',
+    msgExceedMax: 'Maximum number is %s'
   };
 
 
@@ -173,10 +175,15 @@
       var allIsWell = true;
 
       for (var i = 0, j = fields.length; i < j; i++) {
-        var el    = fields[i],
-            $el   = $(el),
-            value = el.value,
-            type  = el.getAttribute('type');
+        var el      = fields[i],
+            $el     = $(el),
+            value   = el.value,
+            type    = el.getAttribute('type'),
+            min     = el.getAttribute('min') || false,
+            max     = el.getAttribute('max') || false,
+            nValue  = Math.floor(value),
+            nMin    = Math.floor(min),
+            nMax    = Math.floor(max);
 
 
         /**
@@ -186,12 +193,28 @@
           continue;
         }
 
-        if ( !$.isNumeric( value ) ) {
+        if ( !isNumber( value ) ) {
           resetFields( $el );
           $el.addClass( userOpts.classError );
           addMessage( $el, userOpts.msgNumber );
 
           allIsWell = false;
+        } else {
+
+          if ( !!min && nValue < nMin ) {
+            resetFields( $el );
+            $el.addClass( userOpts.classError );
+            addMessage( $el, userOpts.msgExceedMin );
+
+            allIsWell = false;
+          } else if ( !!max && nValue > nMax ) {
+            resetFields( $el );
+            $el.addClass( userOpts.classError );
+            addMessage( $el, userOpts.msgExceedMax );
+
+            allIsWell = false;
+          }
+
         }
       }
 
@@ -251,6 +274,10 @@
   function isEmailValid( email ) {
     // http://badsyntax.co/post/javascript-email-validation-rfc822
     return /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/.test( email );
+  }
+
+  function isNumber( n ) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
 
