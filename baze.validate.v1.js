@@ -2,6 +2,7 @@
 
   var pluginName = 'bazeValidate';
 
+
   /**
    * Plugin's default settings
    * @config {string} classError
@@ -20,6 +21,7 @@
     msgEmail    : 'Invalid email address.',
     msgNumber   : 'Input must be number.'
   };
+
 
   /**
    * Represents the plugin instance
@@ -42,12 +44,14 @@
      */
     this.element.setAttribute('novalidate', '');
 
+
     /**
      * set aria-required attribute to each required inputs
      */
     this.$element.find('[required]').attr('aria-required', 'true');
 
     var userOpts = this.settings;
+
 
     /**
      * @param {jQuery object} form
@@ -58,6 +62,7 @@
       $(msgs).remove();
     };
 
+
     /**
      * @param {jQuery object} field
      * @param {string} message
@@ -66,6 +71,7 @@
       var hasMsg  = field.parent().find('.' + userOpts.classMsg),
           id      = getUID(),
           msg     = $(document.createElement('span'));
+
 
       /**
        * Remove existing message
@@ -79,6 +85,7 @@
         'aria-invalid': 'true'
       });
 
+
       /**
        * Place message after input element
        */
@@ -88,6 +95,7 @@
         .text( message )
         .insertAfter( field );
     };
+
 
     /**
      * @param {jQuery object} fields
@@ -99,8 +107,10 @@
         .removeClass( userOpts.classSuccess );
     };
 
+
     /**
      * @param {jQuery object} fields
+     * @return {boolean}
      */
     var validateEmpty = function ( fields ) {
       var allIsWell = true;
@@ -122,8 +132,10 @@
       return allIsWell;
     };
 
+
     /**
      * @param {jQuery object} fields
+     * @return {boolean}
      */
     var validateEmail = function ( fields ) {
       var allIsWell = true;
@@ -132,7 +144,8 @@
         var el    = fields[i],
             $el   = $(el),
             value = el.value,
-            type  = el.type;
+            type  = el.getAttribute('type');
+
 
         /**
          * Ignore if input type is not email
@@ -151,8 +164,10 @@
       return allIsWell;
     };
 
+
     /**
      * @param {jQuery object} fields
+     * @return {boolean}
      */
     var validateNumeric = function ( fields ) {
       var allIsWell = true;
@@ -161,7 +176,8 @@
         var el    = fields[i],
             $el   = $(el),
             value = el.value,
-            type  = el.type;
+            type  = el.getAttribute('type');
+
 
         /**
          * Ignore if input type is not number
@@ -209,10 +225,12 @@
       }
     };
 
+
     /**
      * Attach validateFields on form submit
      */
     this.$element.on('submit', validateFields);
+
 
     /**
      * Remove validateFields from submit event
@@ -226,11 +244,19 @@
   };
 
 
+  /**
+   * @param {string} email
+   * @return {boolean}
+   */
   function isEmailValid( email ) {
     // http://badsyntax.co/post/javascript-email-validation-rfc822
     return /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/.test( email );
   }
 
+
+  /**
+   * @return {string} unique ID
+   */
   function getUID() {
     var randInt = Math.floor((new Date).getTime()) + Math.floor((Math.random() * 100));
     var UID = 'BV' + randInt;
