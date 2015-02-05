@@ -1,6 +1,6 @@
 ;(function ( $, window, document, undefined ) {
 
-  var pluginName = 'BazeValidate';
+  var pluginName = 'bazeValidate';
 
   /**
    * Plugin's default settings
@@ -195,7 +195,20 @@
       }
     };
 
-    this.$element.submit( validateFields );
+    /**
+     * Attach validateFields on form submit
+     */
+    this.$element.on('submit', validateFields);
+
+    /**
+     * Remove validateFields from submit event
+     */
+    this.$element.on('bazevalidate.destroy', function () {
+      var $this = $(this);
+
+      $this.off('submit', validateFields);
+      $.removeData( $this[0], 'plugin_' + pluginName );
+    });
   };
 
 
