@@ -275,7 +275,9 @@
     this.$element.on('bazevalidate.destroy', function () {
       var $this = $(this);
 
-      $this.off('submit', validateFields);
+      $this
+        .off('submit', validateFields)
+        .removeAttr('novalidate');
       $.removeData( $this[0], 'plugin_' + pluginName );
     });
   };
