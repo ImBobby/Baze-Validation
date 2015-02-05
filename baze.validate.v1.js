@@ -126,21 +126,27 @@
      * @param {jQuery object} fields
      */
     var validateEmail = function ( fields ) {
-      var allIsWell = true,
-          type;
+      var allIsWell = true;
 
-      fields.each( function (i, el) {
-        var $el = $(el);
-        type = el.getAttribute('type');
+      for (var i = 0, j = fields.length; i < j; i++) {
+        var el    = fields[i],
+            $el   = $(el),
+            value = el.value,
+            type  = el.type;
 
-        if ( type === 'email' && !isEmailValid( el.value ) ) {
+        /**
+         * Ignore if input type is not email
+         */
+        if ( type !== 'email' ) {
+          continue;
+        }
+
+        if ( !isEmailValid( value ) ) {
           resetFields( $el );
           $el.addClass( userOpts.classError );
           addMessage( $el, userOpts.msgEmail );
-
-          allIsWell = false;
         }
-      });
+      }
 
       return allIsWell;
     };
@@ -149,21 +155,29 @@
      * @param {jQuery object} fields
      */
     var validateNumeric = function ( fields ) {
-      var allIsWell = true,
-          type;
+      var allIsWell = true;
 
-      fields.each( function (i, el) {
-        var $el = $(el);
-        type = el.getAttribute('type');
+      for (var i = 0, j = fields.length; i < j; i++) {
+        var el    = fields[i],
+            $el   = $(el),
+            value = el.value,
+            type  = el.type;
 
-        if ( type === 'number' && !$.isNumeric( el.value ) ) {
+        /**
+         * Ignore if input type is not number
+         */
+        if ( type !== 'number' ) {
+          continue;
+        }
+
+        if ( !$.isNumeric( value ) ) {
           resetFields( $el );
           $el.addClass( userOpts.classError );
           addMessage( $el, userOpts.msgNumber );
 
           allIsWell = false;
         }
-      });
+      }
 
       return allIsWell;
     };
