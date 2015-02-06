@@ -50,7 +50,13 @@ Given the markup
 </form>
 ```
 
-Initialize by doing
+Quick initialization by doing this
+
+```Javascript
+$('form').bazeValidate();
+```
+
+or you can pass options to suit your needs
 
 ```Javascript
 $('form').bazeValidate({
