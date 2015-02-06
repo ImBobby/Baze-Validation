@@ -42,11 +42,11 @@ Given the markup
     <label for="input1">Username</label>
     <input id="input1" type="text" required>
     
-    <label for="input2">Password</label>
-    <input id="input2" type="password" required>
+    <label for="input2">Email</label>
+    <input id="input2" type="email" required>
     
     <label for="input3">Age</label>
-    <input id="input3" type="number" min="18" max="28" required>
+    <input id="input3" type="number" required>
 </form>
 ```
 
