@@ -13,15 +13,15 @@
    * @config {string} msgNumber
    */
   var defaults = {
-    classInvalid: 'form-input--error',
-    classValid  : 'form-input--success',
-    classMsg    : 'form-msg-error',
+    classInvalid: 'input-invalid',
+    classValid  : 'input-valid',
+    classMsg    : 'msg-error',
 
     msgEmpty    : 'This field is required.',
     msgEmail    : 'Invalid email address.',
     msgNumber   : 'Input must be number.',
-    msgExceedMin: 'Minimum number is %s',
-    msgExceedMax: 'Maximum number is %s'
+    msgExceedMin: 'Minimum number is %s.',
+    msgExceedMax: 'Maximum number is %s.'
   };
 
 

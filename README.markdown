@@ -1,31 +1,30 @@
 # Baze Validation
 
 
-> Baze Validation is a library to run basic validation to form's input element
+> Baze Validation is a library to run basic form validation
 
 
 ## Features
-* Validate empty fields
+* Validate empty fields (including black space)
 * Validate email format ([RFC822 specification](http://www.w3.org/Protocols/rfc822/#z8))
-* Validate numeric value
-* Validate minimum and maximum input type number's value
+* Validate numeric value with optional minimum and maximum value
 * Accessibility enhancement
 
 ## Install
 
-You can get the script via bower.
+You can get a fresh copy of Baze Validation via [bower](http://bower.io/).
 ```
 bower install baze-validation --save
 ```
-or download from the [project release](https://github.com/ImBobby/Baze-Validation/releases).
+or you can [download the zip file](https://github.com/ImBobby/Baze-Validation/archive/master.zip).
 
 ### Dependencies
 
-Baze Validation depends on 2 library:
+Baze Validation depends on 2 libraries:
 - jQuery
 - [sprintf.js](https://github.com/alexei/sprintf.js) by [Alexei](https://github.com/alexei)
 
-So make sure to include those 2 libraries before hand.
+So make sure to include those 2 libraries before Baze Validation
 
 ```HTML
 <script src="jquery.js"></script>
@@ -50,19 +49,19 @@ Given the markup
 </form>
 ```
 
-Quick initialization by doing this
+For quick initialization using default options
 
 ```Javascript
 $('form').bazeValidate();
 ```
 
-or you can pass options to suit your needs
+Or you can pass options to suit your needs
 
 ```Javascript
 $('form').bazeValidate({
-    classInvalid    : 'form-input--error',
-    classValid      : 'form-input--success',
-    classMsg        : 'form-msg-error',
+    classInvalid    : 'input-invalid',
+    classValid      : 'input-valid',
+    classMsg        : 'msg-error',
     msgEmpty        : 'This field is required.',
     msgEmail        : 'Invalid email address.',
     msgNumber       : 'Input must be number.',
@@ -76,22 +75,22 @@ $('form').bazeValidate({
 
 #### classInvalid
 * Type: **String**
-* Default: **form-input--error**
-* Description: Class to be added if input invalid
+* Default: **input-invalid**
+* Description: Class to be added to invalid input
 
 -
 
 #### classValid
 * Type: **String**
-* Default: **form-input--success**
-* Description: Class to be added if input valid
+* Default: **input-valid**
+* Description: Class to be added to valid input
 
 -
 
 #### classMsg
 * Type: **String**
-* Default: **form-msg-error**
-* Description: Class to be added to form message
+* Default: **msg-error**
+* Description: Class to be added to form error message
 
 -
 
@@ -141,8 +140,8 @@ $('form').trigger('bazevalidate.destroy');
 
 1. **Attribute `novalidate` will be added to `<form>`** to prevent browser's form validation.
 2. Baze Validation will validate all elements inside `<form>` that has `required` attribute. **Elements without `required` attribute (optional field) will be ignored**.
-3. If a field does not pass, Baze Validation will add `form-input--error` class (customizable) and an error message with class `form-msg-error` (customizable) will be added after the element.
-4. If pass, Baze Validation will add `form-input--success` to the input.
+3. If a field does not pass, Baze Validation will add `input-invalid` class (customizable) and an error message with class `msg-error` (customizable) will be added after the element.
+4. If pass, Baze Validation will add `input-valid` to the input.
 
 
 ### Styling
