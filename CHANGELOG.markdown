@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0
+
+* Complete rewrite
+* Api changes
+* Add destroy method
+
 ## 0.7.0
 
 Improve accessibility by adding:
