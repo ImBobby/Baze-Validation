@@ -309,7 +309,7 @@
    * @return {string} unique ID
    */
   function getUID() {
-    var randInt = Math.floor((new Date).getTime()) + Math.floor((Math.random() * 100));
+    var randInt = Math.floor((new Date()).getTime()) + Math.floor((Math.random() * 100));
     var UID = 'BV' + randInt;
 
     return UID;
