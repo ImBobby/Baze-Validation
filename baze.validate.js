@@ -1,3 +1,5 @@
+/*! Baze Validation v0.7.0 | (c) 2015 @_bobbylie | http://git.io/bxW4 */
+
 ;(function ( $, window, document, undefined ) {
 
   var pluginName = 'bazeValidate';
