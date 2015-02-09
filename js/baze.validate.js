@@ -1,3 +1,4 @@
+/*! Baze Validation v1.0.0 | (c) 2015 @_bobbylie | http://git.io/bxW4 */
 
 ;(function ( $, window, document, undefined ) {
 
@@ -14,15 +15,15 @@
    * @config {string} msgNumber
    */
   var defaults = {
-    classInvalid: 'form-input--error',
-    classValid  : 'form-input--success',
-    classMsg    : 'form-msg-error',
+    classInvalid: 'input-invalid',
+    classValid  : 'input-valid',
+    classMsg    : 'msg-error',
 
     msgEmpty    : 'This field is required.',
     msgEmail    : 'Invalid email address.',
     msgNumber   : 'Input must be number.',
-    msgExceedMin: 'Minimum number is %s',
-    msgExceedMax: 'Maximum number is %s'
+    msgExceedMin: 'Minimum number is %s.',
+    msgExceedMax: 'Maximum number is %s.'
   };
 
 
@@ -308,7 +309,7 @@
    * @return {string} unique ID
    */
   function getUID() {
-    var randInt = Math.floor((new Date).getTime()) + Math.floor((Math.random() * 100));
+    var randInt = Math.floor((new Date()).getTime()) + Math.floor((Math.random() * 100));
     var UID = 'BV' + randInt;
 
     return UID;

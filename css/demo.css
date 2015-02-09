@@ -153,23 +153,23 @@ textarea {
     outline: none;
 }
 
-.form-input--error {
+.input-invalid {
     border-color: red;
 }
 
-.form-input--error:focus {
+.input-invalid:focus {
     border-color: red;
 }
 
-.form-input--success {
+.input-valid {
     border-color: #51bb73;
 }
 
-.form-input--success:focus {
+.input-valid:focus {
     border-color: #51bb73;
 }
 
-.form-msg-error {
+.msg-error {
     font-size: 12px;
     color: red;
 }
