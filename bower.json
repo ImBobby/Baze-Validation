@@ -3,6 +3,7 @@
   "dependencies": {
     "jquery": "1.11.1",
     "normalize-css": "~3.0.1",
-    "baze-validation": "~0.7.0"
+    "baze-validation": "~1.0.0",
+    "sprintf": "~1.0.2"
   }
 }

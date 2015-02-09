@@ -4,234 +4,234 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <meta name="description" content="Validate your form with ease using Baze Validation">
+    <meta name="description" content="Baze Validation is a library to run basic form validation">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Baze Validation</title>
+    <title>Baze Validation - Basic form validation</title>
 
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/foundation.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <a href="https://github.com/ImBobby/Baze-Validation">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png">
-        <span class="sr-only">fork me on github</span>
-    </a>
+    <div class="container">
+        <header class="main-header">
+            <h1 class="library-name heading">Baze Validation</h1>
+            <p class="library-desc">Baze Validation is a library to run basic form validation</p>
 
-    <header class="main-header">
-        <div class="container">
-            <h1>Baze Validation <span class="version">v0.7.0</span></h1>
-            <p>Validate your form with ease</p>
-            <iframe src="http://ghbtns.com/github-btn.html?user=ImBobby&repo=Baze-Validation&type=watch&count=true"
-  allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-        </div>
-    </header>
+            <small>
+                <a href="https://github.com/ImBobby/Baze-Validation">Github</a>
+                &middot;
+                <a href="https://github.com/ImBobby/Baze-Validation/issues">Issues</a>
+                &middot;
+                <span>Current version: <u>1.0.0</u></span>
+            </small>
+        </header>
+    </div>
 
     <main>
-        <div class="container">
-            <section>
-                <h2>TL;DR;</h2>
+        <section class="section section--white">
+            <div class="container">
+                <h2 class="heading">Demo</h2>
 
-                <p>Baze Validation will validate:</p>
+                <form class="form-demo">
+                    <div class="form-row">
+                        <label for="dUsername">Username <span class="red">*</span></label>
+                        <input class="form-input" id="dUsername" type="text" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="dEmail">Email <span class="red">*</span></label>
+                        <input class="form-input" id="dEmail" type="email" placeholder="name@domain.com" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="dAge">Age <span class="red">*</span></label>
+                        <input class="form-input" id="dAge" type="number" min="18" max="30" placeholder="min 18 max 30" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="dPostal">Postal <span class="red">*</span></label>
+                        <input class="form-input" id="dPostal" type="number" placeholder="number only" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="dBio">Bio <span class="red">*</span></label>
+                        <textarea class="form-input" id="dBio" rows="3" required></textarea>
+                    </div>
+                    <button class="btn btn--primary">Submit</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="heading">Features</h2>
 
                 <ul>
-                    <li>Blank space value</li>
-                    <li>Empty fields</li>
-                    <li>Email format</li>
-                    <li>Numeric value</li>
-                    <li>More to come...</li>
+                    <li>Validate empty fields (including black space)</li>
+                    <li>Validate email format (<a href="http://www.w3.org/Protocols/rfc822/#z8">RFC822 specification</a>)</li>
+                    <li>Validate numeric value with optional minimum and maximum value</li>
+                    <li>Accessibility enhancement</li>
                 </ul>
-            </section>
+            </div>
+        </section>
 
-            <section id="install">
-                <h2>
-                    <a class="heading-anchor" href="#install">Install</a>
-                </h2>
+        <section class="section section--white">
+            <div class="container">
+                <h2 class="heading">Install</h2>
 
-                <p>You can get the script via bower.</p>
+                <p>You can get a fresh copy of Baze Validation via <a href="http://bower.io/">Bower.</a></p>
 
-<pre>
-<code>bower install baze-validation --save</code>
-</pre>
-            
-            <p>It depends on jQuery so make sure include it after jQuery.</p>
+                <pre><code class="Bash">bower install baze-validation --save</code></pre>
 
-<pre>
-<code>&lt;script src="jquery.js"&gt;&lt;/script&gt;
-&lt;script src="baze.validate.js"&gt;&lt;/script&gt;</code>
-</pre>
-            </section>
-            
-            <section id="howToUse">
-                <h2>
-                    <a class="heading-anchor" href="#howToUse">How to use</a>
-                </h2>
+                <p>Or you can <a href="https://github.com/ImBobby/Baze-Validation/archive/master.zip">download it directly from the repository</a>.</p>
 
-                <p>Add attribute <code>data-baze-validate</code> to the <code>&lt;form&gt;</code> element and <code>required</code> attribute to each input field that need to be validated.</p>
+                <h3 class="heading">Dependencies</h3>
 
-                <p>Any input fields with <code>required</code> attribute, will be automatically validated for blank space and empty value. Field with input type <code>email</code> will be automatically validated for email format and input with type <code>number</code> will be automatically validated for numeric value.</p>
+                <p>Baze Validation depends on 2 libraries:</p>
 
-<pre>
-<code>&lt;form data-baze-validate&gt;
-    &lt;label for="username"&gt;Username&lt;/label&gt;
-    &lt;input id="username" type="text" required&gt;
+                <ul>
+                    <li>jQuery</li>
+                    <li><a href="https://github.com/alexei/sprintf.js">sprintf</a> by <a href="https://github.com/alexei">Alexei</a></li>
+                </ul>
 
-    &lt;label for="email"&gt;Email&lt;/label&gt;
-    &lt;input id="email" type="email" required&gt;
-&lt;/form&gt;        
-</code>
-</pre>
+                <p>So make sure to include those 2 libraries before Baze Validation</p>
 
-                <p>Then init the plugin by calling <code>run</code> function.</p>
+                <pre><code class="HTML">&lt;script src="jquery.js">&lt;/script>
+&lt;script src="sprintf.js">&lt;/script>
+&lt;script src="baze.validation.js">&lt;/script></code></pre>
+            </div>
+        </section>
 
-<pre>
-<code>BazeValidate.run( options );
-</code>
-</pre>
-            </section>
+        <section class="section">
+            <div class="container">
+                <h2 class="heading">How to use</h2>
 
-            <section id="options">
-                <h2>
-                    <a class="heading-anchor" href="#options">Options</a>
-                </h2>
+                <p>Given the markup</p>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Option</th>
-                            <th>Type</th>
-                            <th>Default</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>classError</td>
-                            <td>String</td>
-                            <td>'form-input--error'</td>
-                            <td>Class to be added if input invalid</td>
-                        </tr>
-                        <tr>
-                            <td>classSuccess</td>
-                            <td>String</td>
-                            <td>'form-input--success'</td>
-                            <td>Class to be added if input valid</td>
-                        </tr>
-                        <tr>
-                            <td>classMsg</td>
-                            <td>String</td>
-                            <td>'form-msg-error'</td>
-                            <td>Class to be added to form message</td>
-                        </tr>
-                        <tr>
-                            <td>msgEmpty</td>
-                            <td>String</td>
-                            <td>'This field is required.'</td>
-                            <td>Text to display if input is empty</td>
-                        </tr>
-                        <tr>
-                            <td>msgEmail</td>
-                            <td>String</td>
-                            <td>'Invalid email address.'</td>
-                            <td>Text to display for invalid email address</td>
-                        </tr>
-                        <tr>
-                            <td>msgNumber</td>
-                            <td>String</td>
-                            <td>'Input must be number.'</td>
-                            <td>Text to display if input value is not numeric</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+<pre><code class="HTML">&lt;form>
+    &lt;label for="input1">Username&lt;/label>
+    &lt;input id="input1" type="text" required>
 
-            <section id="howItWorks">
-                <h2>
-                    <a class="heading-anchor" href="#howItWorks">How it works</a>
-                </h2>
+    &lt;label for="input2">Email&lt;/label>
+    &lt;input id="input2" type="email" required>
 
-                <p>Baze Validation will listen on form submit event. When a form is submitted:</p>
+    &lt;label for="input3">Age&lt;/label>
+    &lt;input id="input3" type="number" required>
+&lt;/form>                    
+</code></pre>
+                
+                <p>For quick initialization using default options</p>
+
+<pre><code class="Javascript">$('form').bazeValidate();</code></pre>
+
+                <p>Or you can pass options to suit your needs</p>
+
+<pre><code class="Javascript">$('form').bazeValidate({
+    classInvalid    : 'form-input--error',
+    classValid      : 'form-input--success',
+    classMsg        : 'form-msg-error',
+    msgEmpty        : 'This field is required.',
+    msgEmail        : 'Invalid email address.',
+    msgNumber       : 'Input must be number.',
+    msgExceedMin    : 'Minimum number is %s.',
+    msgExceedMax    : 'Maximum number is %s.'
+});
+</code></pre>
+            </div>
+        </section>
+
+        <section class="section section--white">
+            <div class="container">
+                <h2 class="heading">Options</h2>
+
+                <dl class="options-list">
+                    <dt>classInvalid</dt>
+                    <dd>Type: <strong>String</strong></dd>
+                    <dd>Default: <strong>input-invalid</strong></dd>
+                    <dd>Description: Class to be added to invalid input</dd>
+
+                    <dt>classValid</dt>
+                    <dd>Type: <strong>String</strong></dd>
+                    <dd>Default: <strong>input-valid</strong></dd>
+                    <dd>Description: Class to be added to valid input</dd>
+
+                    <dt>classMsg</dt>
+                    <dd>Type: <strong>String</strong></dd>
+                    <dd>Default: <strong>msg-error</strong></dd>
+                    <dd>Description: Class to be added to form error message</dd>
+
+                    <dt>msgEmpty</dt>
+                    <dd>Type: <strong>String</strong></dd>
+                    <dd>Default: <strong>This field is required.</strong></dd>
+                    <dd>Description: Text to display if input is empty</dd>
+
+                    <dt>msgEmail</dt>
+                    <dd>Type: <strong>String</strong></dd>
+                    <dd>Default: <strong>Invalid email address.</strong></dd>
+                    <dd>Description: Text to display for invalid email address</dd>
+
+                    <dt>msgNumber</dt>
+                    <dd>Type: <strong>String</strong></dd>
+                    <dd>Default: <strong>Input must be number.</strong></dd>
+                    <dd>Description: Text to display if input value is not numeric</dd>
+
+                    <dt>msgExceedMin</dt>
+                    <dd>Type: <strong>String</strong></dd>
+                    <dd>Default: <strong>Minimum number is %s.</strong></dd>
+                    <dd>Description: Text to display if input type number's value is less than minimum value specified by min attribute. %s is a placeholder to display the minimum value, so you can place it anywhere or even remove it.</dd>
+
+                    <dt>msgExceedMax</dt>
+                    <dd>Type: <strong>String</strong></dd>
+                    <dd>Default: <strong>Maximum number is %s.</strong></dd>
+                    <dd>Description: Text to display if input type number's value is greater than maximum value specified by max attribute. %s is a placeholder to display the maximum value, so you can place it anywhere or even remove it.</dd>
+                </dl>
+
+                <h3 class="heading">Destroy</h3>
+
+                <p>In case you need to destroy Baze Validation instance</p>
+
+<pre><code class="Javascript">$('form').trigger('bazevalidate.destroy');</code></pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="heading">How it works</h2>
 
                 <ol>
-                    <li>Iterate for each input fields.</li>
-                    <li>If field is invalid, class <strong>form-input--error</strong> will be added. A message will be placed after the field with class <strong>form-msg-error</strong>.</li>
-                    <li>If field is valid, class <strong>form-input--success</strong> will be added. No message will be added.</li>
+                    <li><u>Attribute <strong>novalidate</strong> will be added to &lt;form> element</u> to prevent browser's form validation.</li>
+                    <li>Baze Validation will validate all elements inside &lt;form> <strong>that has required attribute</strong>. Elements without required attribute (optional field) will be ignored.</li>
+                    <li><u>If a field does not pass, Baze Validation will add input-invalid class</u> (customizable) and <u>an error message with class msg-error (customizable) will be added</u> after the element.</li>
+                    <li>If pass, Baze Validation will add input-valid class to the input.</li>
                 </ol>
 
-                <p>Baze validation has no default styling so it is up to you how you want to style it.</p>
-            </section>
+                <h3 class="heading">Styling</h3>
 
-            <section id="action">
-                <h2>
-                    <a class="heading-anchor" href="#action">In action</a>
-                </h2>
+                <p>Baze Validation <strong>doesn't offer any default styling</strong> if a field is valid or invalid, so the presentation is fully in your control.</p>
+            </div>
+        </section>
 
-                <p><em>* Interact with this form with devtool open to see how it really works.</em></p>
+        <section class="section section--white">
+            <div class="container">
+                <h2 class="heading">Browsers support</h2>
 
-                <form id="example" action="index.html" data-baze-validate>
-                    <div class="form-row">
-                        <input class="form-input" type="text" placeholder="Username" required>
-                    </div>
-                    <div class="form-row">
-                        <input class="form-input" type="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-row">
-                        <input class="form-input" type="number" placeholder="Age" required>
-                    </div>
-                    <div class="form-row">
-                        <input class="form-input" type="password" placeholder="Password" required>
-                    </div>
-
-                    <div class="form-row">
-                        <button class="btn">submit</button>
-                    </div>
-                </form>
-            </section>
-
-            <section id="api">
-                <h2>
-                    <a class="heading-anchor" href="#api">API</a>
-                </h2>
-
-                <dl>
-                    <dt><code>run()</code></dt>
-                    <dd>Trigger Baze Validation.</dd>
-
-                    <dt><code>setErrorClass( string )</code></dt>
-                    <dd>set class name for invalid fields. default: <strong>form-input--error</strong>.</dd>
-
-                    <dt><code>setSuccessClass( string )</code></dt>
-                    <dd>set class name for valid fields. default: <strong>form-input--success</strong>.</dd>
-
-                    <dt><code>setMsgClass( string )</code></dt>
-                    <dd>set class name for form message. default: <strong>form-msg-error</strong>.</dd>
-                </dl>
-            </section>
-
-            <section id="browserSupport">
-                <h2>
-                    <a class="heading-anchor" href="#browserSupport">Browser support</a>
-                </h2>
-                
-                <p>Baze validation has been tested and run very smooth until IE8. Deep condolence if you still have to support IE7 and below.</p>
-            </section>
-        </div>
+                <ul>
+                    <li>IE8+</li>
+                    <li>Chrome 14+</li>
+                    <li>Firefox 10+</li>
+                    <li>Safari 5+</li>
+                    <li>Opera 11.1</li>
+                    <li>iOS 5.1+</li>
+                    <li>Android 2.2+</li>
+                </ul>
+            </div>
+        </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="container">
-            <p>Made by Bobby</p>
-            <a href="https://twitter.com/_BobbyLie" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @_BobbyLie</a>
-        </div>
-    </footer>
-
     <script src="js/jquery.min.js"></script>
+    <script src="js/sprintf.min.js"></script>
     <script src="js/baze.validate.js"></script>
-    <script>
-        (function () {
-            BazeValidate.run();
-        })();
-    </script>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="js/demo.js"></script>
 </body>
 </html>
