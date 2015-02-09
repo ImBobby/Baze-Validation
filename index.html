@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <meta name="description" content="Validate your form with ease using Baze Validation">
+    <meta name="description" content="Baze Validation is a library to run basic form validation">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Baze Validation</title>
+    <title>Baze Validation - Basic form validation</title>
 
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="css/normalize.css">
@@ -147,17 +147,17 @@
                 <dl class="options-list">
                     <dt>classInvalid</dt>
                     <dd>Type: <strong>String</strong></dd>
-                    <dd>Default: <strong>form-input--error</strong></dd>
+                    <dd>Default: <strong>input-invalid</strong></dd>
                     <dd>Description: Class to be added to invalid input</dd>
 
                     <dt>classValid</dt>
                     <dd>Type: <strong>String</strong></dd>
-                    <dd>Default: <strong>form-input--success</strong></dd>
+                    <dd>Default: <strong>input-valid</strong></dd>
                     <dd>Description: Class to be added to valid input</dd>
 
                     <dt>classMsg</dt>
                     <dd>Type: <strong>String</strong></dd>
-                    <dd>Default: <strong>form-msg-error</strong></dd>
+                    <dd>Default: <strong>msg-error</strong></dd>
                     <dd>Description: Class to be added to form error message</dd>
 
                     <dt>msgEmpty</dt>
@@ -201,8 +201,8 @@
                 <ol>
                     <li><u>Attribute <strong>novalidate</strong> will be added to &lt;form> element</u> to prevent browser's form validation.</li>
                     <li>Baze Validation will validate all elements inside &lt;form> <strong>that has required attribute</strong>. Elements without required attribute (optional field) will be ignored.</li>
-                    <li><u>If a field does not pass, Baze Validation will add form-input--error class</u> (customizable) and <u>an error message with class form-msg-error (customizable) will be added</u> after the element.</li>
-                    <li>If pass, Baze Validation will add form-input--success class to the input.</li>
+                    <li><u>If a field does not pass, Baze Validation will add input-invalid class</u> (customizable) and <u>an error message with class msg-error (customizable) will be added</u> after the element.</li>
+                    <li>If pass, Baze Validation will add input-valid class to the input.</li>
                 </ol>
 
                 <h3 class="heading">Styling</h3>
