@@ -1,85 +1,160 @@
 # Baze Validation
 
 
-> Validate your form with ease using Baze Validation
+> Baze Validation is a library to run basic form validation
 
-Baze Validation will validate:
-* Blank space value
-* Empty fields
-* Email format
-* Numeric value
-* More to come
+
+## Features
+* Validate empty fields (including black space)
+* Validate email format ([RFC822 specification](http://www.w3.org/Protocols/rfc822/#z8))
+* Validate numeric value with optional minimum and maximum value
+* Accessibility enhancement
 
 ## Install
 
-You can get the script via bower.
+You can get a fresh copy of Baze Validation via [bower](http://bower.io/).
 ```
 bower install baze-validation --save
 ```
-or download from the [project release](https://github.com/ImBobby/Baze-Validation/releases).
+or you can [download the zip file](https://github.com/ImBobby/Baze-Validation/archive/master.zip).
 
-It depends on jQuery so make sure include it after jQuery.
+### Dependencies
+
+Baze Validation depends on 2 libraries:
+- jQuery
+- [sprintf.js](https://github.com/alexei/sprintf.js) by [Alexei](https://github.com/alexei)
+
+So make sure to include those 2 libraries before Baze Validation
 
 ```HTML
 <script src="jquery.js"></script>
+<script src="sprintf.js"></script>
 <script src="baze.validation.js"></script>
 ```
 
 ## How to use
 
-Add attribute `data-baze-validate` to the `<form>` element and `required` attribute to each input field that need to be validated.
+Given the markup
 
 ```HTML
-<form data-baze-validate>
-    <label for="username">Username</label>
-    <input id="username" type="text" required>
-
-    <label for="email">Email</label>
-    <input id="email" type="email" required>
+<form>
+    <label for="input1">Username</label>
+    <input id="input1" type="text" required>
+    
+    <label for="input2">Email</label>
+    <input id="input2" type="email" required>
+    
+    <label for="input3">Age</label>
+    <input id="input3" type="number" required>
 </form>
 ```
 
-Any input fields with `required` attribute, will be automatically validated for blank space and empty value. Field with input type `email` will be automatically validated for email format. Field with input type `email` will be automatically validated for email format and input with type number will be automatically validated for numeric value.
-
-BazeValidate will be exposed to global. Then init the plugin by calling `run` function.
+For quick initialization using default options
 
 ```Javascript
-BazeValidate.run( options );
+$('form').bazeValidate();
 ```
 
-## Options
+Or you can pass options to suit your needs
 
-| Option  | Type  | Default  | Description  |
-|---|---|---|---|
-| classError  | String  | 'form-input--error'  | Class to be added if input invalid  |
-| classSuccess  | String  | 'form-input--success'  | Class to be added if input valid  |
-| classMsg  | String  | 'form-msg-error'  | Class to be added to form message  |
-| msgEmpty  | String  | 'This field is required.'  | Text to display if input is empty  |
-| msgEmail  | String  | 'Invalid email address.'  | Text to display for invalid email address  |
-| msgNumber  | String  | 'Input must be number.'  | Text to display if input value is not numeric  |
+```Javascript
+$('form').bazeValidate({
+    classInvalid    : 'input-invalid',
+    classValid      : 'input-valid',
+    classMsg        : 'msg-error',
+    msgEmpty        : 'This field is required.',
+    msgEmail        : 'Invalid email address.',
+    msgNumber       : 'Input must be number.',
+    msgExceedMin    : 'Minimum number is %s.',
+    msgExceedMax    : 'Maximum number is %s.'
+});
+```
+
+
+### Options
+
+#### classInvalid
+* Type: **String**
+* Default: **input-invalid**
+* Description: Class to be added to invalid input
+
+-
+
+#### classValid
+* Type: **String**
+* Default: **input-valid**
+* Description: Class to be added to valid input
+
+-
+
+#### classMsg
+* Type: **String**
+* Default: **msg-error**
+* Description: Class to be added to form error message
+
+-
+
+#### msgEmpty
+* Type: **String**
+* Default: **This field is required.**
+* Description: Text to display if input is empty
+
+-
+
+#### msgEmail
+* Type: **String**
+* Default: **Invalid email address.**
+* Description: Text to display for invalid email address
+
+-
+
+#### msgNumber
+* Type: **String**
+* Default: **Input must be number.**
+* Description: Text to display if input value is not numeric
+
+-
+
+#### msgExceedMin
+* Type: **String**
+* Default: **Minimum number is %s.**
+* Description: Text to display if input type number's value is less than minimum value specified by min attribute. %s is a placeholder to display the minimum value, so you can place it anywhere or even remove it.
+
+-
+
+#### msgExceedMax
+* Type: **String**
+* Default: **Maximum number is %s.**
+* Description: Text to display if input type number's value is greater than maximum value specified by max attribute. %s is a placeholder to display the maximum value, so you can place it anywhere or even remove it.
+
+
+### Destroy
+
+To destroy Baze Validation instance
+
+```Javascript
+$('form').trigger('bazevalidate.destroy');
+```
 
 ## How it works
 
-Baze Validation will listen on form submit event. When a form is submitted:
+1. **Attribute `novalidate` will be added to `<form>`** to prevent browser's form validation.
+2. Baze Validation will validate all elements inside `<form>` that has `required` attribute. **Elements without `required` attribute (optional field) will be ignored**.
+3. If a field does not pass, Baze Validation will add `input-invalid` class (customizable) and an error message with class `msg-error` (customizable) will be added after the element.
+4. If pass, Baze Validation will add `input-valid` to the input.
 
-1. Iterate for each input fields.
-2. If field is invalid, class **form-input--error** will be added. A message will be placed after the field with class **form-msg-error**.
-3. If field is valid, class **form-input--success** will be added. No message will be added.
 
-Baze validation has no default styling so it is up to you how you want to style it.
+### Styling
 
-## API
-
-Baze Validation expose these APIs
-
-| API   | Description  |
-|---|---|
-| `run()`  | Trigger Baze Validation  |
-| `setErrorClass( string )`  | set class name for invalid fields. default: **form-input--error**   |
-| `setSuccessClass( string )`  | set class name for valid fields. default: **form-input--success**   |
-| `setMsgClass( string )`  | set class name for form message. default: **form-msg-error**   |
+Baze Validation doesn't offer any default styling if a field is valid or invalid, so the presentation is fully in your control.
 
 
 ## Browser support
 
-Baze validation has been tested and run very smooth until IE8. Deep condolence if you still have to support IE7 and below.
+* IE8+
+* Chrome 14+
+* Firefox 10+
+* Safari 5+
+* Opera 11.1
+* iOS 5.1+
+* Android 2.2+
