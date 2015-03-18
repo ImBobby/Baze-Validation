@@ -82,8 +82,12 @@ code {
     margin: 0 auto;
 }
 
+.container--large {
+    max-width: 960px;
+}
+
 .section {
-    padding: 3.2em 0;
+    padding: 4.8em 0 3.2em;
 }
 
 .section--white {
@@ -91,7 +95,22 @@ code {
 }
 
 .heading {
+    position: relative;
     color: #d90002;
+}
+
+.heading-anchor {
+    position: absolute;
+    right: 100%;
+    display: none;
+    height: 100%;
+    padding: 0 .8em;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.heading:hover .heading-anchor {
+    display: inline-block;
 }
 
 .red {
@@ -104,11 +123,121 @@ code {
     font-weight: 700;
 }
 
+/* Nav
+--------------------------------------------------------------------------- */
+
+.nav {
+    position: fixed;
+    bottom: 100%;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    font-size: 16px;
+    background: #444;
+    -webkit-transform: translate(0,0);
+        -ms-transform: translate(0,0);
+            transform: translate(0,0);
+    -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+}
+
+.nav--open {
+    -webkit-transform: translate(0, 100%);
+        -ms-transform: translate(0, 100%);
+            transform: translate(0, 100%);
+}
+
+.nav-btn {
+    position: absolute;
+    top: 100%;
+    right: .8em;
+    display: inline-block;
+    padding: .4em .8em;
+    border: 0;
+    color: #eee;
+    background: #d90002;
+}
+
+.nav-btn:hover,
+.nav-btn:focus {
+    background: #F70205;
+}
+
+.nav-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.nav-list:after {
+    display: table;
+    clear: both;
+    content: '';
+}
+
+.nav-list-item {
+    float: left;
+    width: 50%;
+    border-bottom: solid 1px #777;
+}
+
+.nav-anchor {
+    position: relative;
+    display: block;
+    padding: .8em 0;
+    vertical-align: bottom;
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-anchor:before {
+    display: inline-block;
+    padding: 0 .8em;
+    height: 100%;
+    color: #eee;
+    content: '\b7';
+}
+
+@media screen and (min-width: 48em) {
+    .nav {
+        top: 0;
+        bottom: auto;
+    }
+
+    .nav--open {
+        transform: translate(0,0);
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+    .nav-list {
+        text-align: center;
+    }
+
+    .nav-list-item {
+        float: none;
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+    }
+
+    .nav-anchor {
+        display: inline-block;
+        padding: .4em 0;
+    }
+
+    .nav-list-item:first-child .nav-anchor:before {
+        display: none;
+    }
+}
+
 /* Header
 --------------------------------------------------------------------------- */
 
 .main-header {
-    padding: 3.2em 0;
+    padding: 4.8em 0 3.2em;
     text-align: center;
     -webkit-transform: translate(0,0);
         -ms-transform: translate(0,0);
@@ -199,7 +328,7 @@ textarea {
     content: '';
 }
 
-/* Buttons
+/* Syntax highlighter
 --------------------------------------------------------------------------- */
 
 .hljs {

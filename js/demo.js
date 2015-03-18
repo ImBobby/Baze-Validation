@@ -5,7 +5,7 @@ $(function () {
         init: function () {
             this.initBazeValidate();
             this.highlight();
-            this.titleParallax();
+            this.nav();
         },
 
         initBazeValidate: function () {
@@ -16,19 +16,16 @@ $(function () {
             hljs.initHighlighting();
         },
 
-        titleParallax: function () {
-            var header = document.querySelector('.main-header'),
-                checkpoint = header.clientHeight;
+        nav: function () {
+            var $nav    = $('.nav'),
+                $navBtn = $('.nav-btn');
 
-            window.addEventListener('scroll', function ( evt ) {
-                var pos = window.scrollY;
-                var opacityVal = ((pos/200) - 1) * -1;
+            var openNav = function (e) {
+                $nav.toggleClass('nav--open');
+            };
 
-                if ( pos < checkpoint ) {
-                    header.style.transform = 'translateY(' + pos/4*-1 + 'px)';
-                    header.style.opacity = opacityVal;
-                }
-            }, false);
+            $navBtn.unbind('click', openNav);
+            $navBtn.bind('click', openNav);
         }
 
     };

@@ -16,25 +16,42 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div class="container">
-        <header class="main-header">
+    <nav class="nav">
+        <button class="nav-btn">Menu</button>
+        <ul class="nav-list">
+            <li class="nav-list-item"><a class="nav-anchor" href="#demo">Demo</a></li><!--
+            --><li class="nav-list-item"><a class="nav-anchor" href="#features">Features</a></li><!--
+            --><li class="nav-list-item"><a class="nav-anchor" href="#install">Install</a></li><!--
+            --><li class="nav-list-item"><a class="nav-anchor" href="#howToUse">How to use</a></li><!--
+            --><li class="nav-list-item"><a class="nav-anchor" href="#options">Options</a></li><!--
+            --><li class="nav-list-item"><a class="nav-anchor" href="#howItWorks">How it works</a></li><!--
+            --><li class="nav-list-item"><a class="nav-anchor" href="#browsersSupport">Browsers support</a></li>
+        </ul>
+    </nav>
+
+    <header class="main-header">
+        <div class="container">
             <h1 class="library-name heading">Baze Validation</h1>
             <p class="library-desc">Baze Validation is a library to run basic form validation</p>
 
-            <small>
-                <a href="https://github.com/ImBobby/Baze-Validation">Github</a>
-                &middot;
-                <a href="https://github.com/ImBobby/Baze-Validation/issues">Issues</a>
-                &middot;
-                <span>Current version: <u>1.0.0</u></span>
-            </small>
-        </header>
-    </div>
+            <a href="https://github.com/ImBobby/Baze-Validation"><small>Github</small></a>
+            &middot;
+            <a href="https://github.com/ImBobby/Baze-Validation/issues"><small>Issues</small></a>
+            &middot;
+            <a href="https://github.com/ImBobby/Baze-Validation/blob/master/CHANGELOG.markdown"><small>Changelog</small></a>
+            <br>
+            <small>Current version: <u>1.0.1</u></small>
+        </div>
+    </header>
 
     <main>
-        <section class="section section--white">
+        <section class="section section--white" id="demo">
             <div class="container">
-                <h2 class="heading">Demo</h2>
+                <h2 class="heading">
+                    Demo
+
+                    <a class="heading-anchor" href="#demo" aria-hidden="true">#</a>
+                </h2>
 
                 <form class="form-demo">
                     <div class="form-row">
@@ -62,9 +79,12 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="features">
             <div class="container">
-                <h2 class="heading">Features</h2>
+                <h2 class="heading">
+                    Features
+                    <a class="heading-anchor" href="#features" aria-hidden="true">#</a>
+                </h2>
 
                 <ul>
                     <li>Validate empty fields (including black space)</li>
@@ -75,9 +95,13 @@
             </div>
         </section>
 
-        <section class="section section--white">
+        <section class="section section--white" id="install">
             <div class="container">
-                <h2 class="heading">Install</h2>
+                <h2 class="heading">
+                    Install
+
+                    <a class="heading-anchor" href="#install">#</a>
+                </h2>
 
                 <p>You can get a fresh copy of Baze Validation via <a href="http://bower.io/">Bower.</a></p>
 
@@ -102,9 +126,13 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="howToUse">
             <div class="container">
-                <h2 class="heading">How to use</h2>
+                <h2 class="heading">
+                    How to use
+
+                    <a class="heading-anchor" href="#howToUse">#</a>
+                </h2>
 
                 <p>Given the markup</p>
 
@@ -140,9 +168,12 @@
             </div>
         </section>
 
-        <section class="section section--white">
+        <section class="section section--white" id="options">
             <div class="container">
-                <h2 class="heading">Options</h2>
+                <h2 class="heading">
+                    Options
+                    <a class="heading-anchor" href="#options">#</a>
+                </h2>
 
                 <dl class="options-list">
                     <dt>classInvalid</dt>
@@ -194,9 +225,12 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="howItWorks">
             <div class="container">
-                <h2 class="heading">How it works</h2>
+                <h2 class="heading">
+                    How it works
+                    <a class="heading-anchor" href="#howItWorks">#</a>
+                </h2>
 
                 <ol>
                     <li><u>Attribute <strong>novalidate</strong> will be added to &lt;form> element</u> to prevent browser's form validation.</li>
@@ -211,9 +245,12 @@
             </div>
         </section>
 
-        <section class="section section--white">
+        <section class="section section--white" id="browsersSupport">
             <div class="container">
-                <h2 class="heading">Browsers support</h2>
+                <h2 class="heading">
+                    Browsers support
+                    <a class="heading-anchor" href="#browsersSupport">#</a>
+                </h2>
 
                 <ul>
                     <li>IE8+</li>
