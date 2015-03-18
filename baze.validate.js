@@ -250,11 +250,19 @@
 
       isOK = validateEmpty( fields );
 
-      if ( !isOK ) evt.preventDefault();
+      if ( !isOK ) {
+        evt.preventDefault();
+
+        $this.find('.' + userOpts.classInvalid).eq(0).focus();
+      }
 
       isOK = validateEmail( fields );
 
-      if ( !isOK ) evt.preventDefault();
+      if ( !isOK ) {
+        evt.preventDefault();
+
+        $this.find('.' + userOpts.classInvalid).eq(0).focus();
+      }
 
       isOK = validateNumeric( fields );
 
