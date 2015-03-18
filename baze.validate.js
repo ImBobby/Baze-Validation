@@ -245,32 +245,24 @@
           focusedField,
           msg;
 
+      var checkValidationResult = function () {
+        if ( !isOK ) {
+          evt.preventDefault();
+          $this.find('.' + userOpts.classInvalid).eq(0).focus();
+        }
+      };
+
       resetFields( fields );
       clearAllMessages( $this );
 
       isOK = validateEmpty( fields );
-
-      if ( !isOK ) {
-        evt.preventDefault();
-
-        $this.find('.' + userOpts.classInvalid).eq(0).focus();
-      }
+      checkValidationResult();
 
       isOK = validateEmail( fields );
-
-      if ( !isOK ) {
-        evt.preventDefault();
-
-        $this.find('.' + userOpts.classInvalid).eq(0).focus();
-      }
+      checkValidationResult();
 
       isOK = validateNumeric( fields );
-
-      if ( !isOK ) {
-        evt.preventDefault();
-
-        $this.find('.' + userOpts.classInvalid).eq(0).focus();
-      }
+      checkValidationResult();
     };
 
 
