@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+* Fix first invalid input not focused if no input type `number` [#9](https://github.com/ImBobby/Baze-Validation/issues/9)
+
 ## 1.0.0
 
 * Complete rewrite
