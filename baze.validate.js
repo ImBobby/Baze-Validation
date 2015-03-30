@@ -73,7 +73,7 @@
      * @param {string} message
      */
     var addMessage = function ( field, message ) {
-      var hasMsg  = field.parent().find('.' + userOpts.classMsg),
+      var hasMsg  = field.next('.' + userOpts.classMsg),
           id      = getUID(),
           msg     = $(document.createElement('span'));
 
@@ -245,32 +245,24 @@
           focusedField,
           msg;
 
+      var checkValidationResult = function () {
+        if ( !isOK ) {
+          evt.preventDefault();
+          $this.find('.' + userOpts.classInvalid).eq(0).focus();
+        }
+      };
+
       resetFields( fields );
       clearAllMessages( $this );
 
       isOK = validateEmpty( fields );
-
-      if ( !isOK ) {
-        evt.preventDefault();
-
-        $this.find('.' + userOpts.classInvalid).eq(0).focus();
-      }
+      checkValidationResult();
 
       isOK = validateEmail( fields );
-
-      if ( !isOK ) {
-        evt.preventDefault();
-
-        $this.find('.' + userOpts.classInvalid).eq(0).focus();
-      }
+      checkValidationResult();
 
       isOK = validateNumeric( fields );
-
-      if ( !isOK ) {
-        evt.preventDefault();
-
-        $this.find('.' + userOpts.classInvalid).eq(0).focus();
-      }
+      checkValidationResult();
     };
 
 
