@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2
+
+* Fix addMessage function removing existing message [#11](https://github.com/ImBobby/Baze-Validation/pull/11)
+* Code optimization
+
 ## 1.0.1
 
 * Fix first invalid input not focused if no input type `number` [#9](https://github.com/ImBobby/Baze-Validation/issues/9)
