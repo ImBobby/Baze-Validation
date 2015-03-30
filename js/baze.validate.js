@@ -1,4 +1,4 @@
-/*! Baze Validation v1.0.0 | (c) 2015 @_bobbylie | http://git.io/bxW4 */
+/*! Baze Validation v1.0.2 | (c) 2015 @_bobbylie | http://git.io/bxW4 */
 
 ;(function ( $, window, document, undefined ) {
 
@@ -73,7 +73,7 @@
      * @param {string} message
      */
     var addMessage = function ( field, message ) {
-      var hasMsg  = field.parent().find('.' + userOpts.classMsg),
+      var hasMsg  = field.next('.' + userOpts.classMsg),
           id      = getUID(),
           msg     = $(document.createElement('span'));
 
@@ -245,24 +245,24 @@
           focusedField,
           msg;
 
+      var checkValidationResult = function () {
+        if ( !isOK ) {
+          evt.preventDefault();
+          $this.find('.' + userOpts.classInvalid).eq(0).focus();
+        }
+      };
+
       resetFields( fields );
       clearAllMessages( $this );
 
       isOK = validateEmpty( fields );
-
-      if ( !isOK ) evt.preventDefault();
+      checkValidationResult();
 
       isOK = validateEmail( fields );
-
-      if ( !isOK ) evt.preventDefault();
+      checkValidationResult();
 
       isOK = validateNumeric( fields );
-
-      if ( !isOK ) {
-        evt.preventDefault();
-
-        $this.find('.' + userOpts.classInvalid).eq(0).focus();
-      }
+      checkValidationResult();
     };
 
 
