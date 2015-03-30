@@ -73,7 +73,7 @@
      * @param {string} message
      */
     var addMessage = function ( field, message ) {
-      var hasMsg  = field.parent().find('.' + userOpts.classMsg),
+      var hasMsg  = field.next('.' + userOpts.classMsg),
           id      = getUID(),
           msg     = $(document.createElement('span'));
 
