@@ -66,7 +66,8 @@ $('form').bazeValidate({
     msgEmail        : 'Invalid email address.',
     msgNumber       : 'Input must be number.',
     msgExceedMin    : 'Minimum number is %s.',
-    msgExceedMax    : 'Maximum number is %s.'
+    msgExceedMax    : 'Maximum number is %s.',
+    onValidated     : null
 });
 ```
 
@@ -126,6 +127,13 @@ $('form').bazeValidate({
 * Type: **String**
 * Default: **Maximum number is %s.**
 * Description: Text to display if input type number's value is greater than maximum value specified by max attribute. %s is a placeholder to display the maximum value, so you can place it anywhere or even remove it.
+
+-
+
+#### onValidated
+* Type: **Function**
+* Default: **null**
+* Description: a callback function that fired once the form validated.
 
 
 ### Destroy

@@ -15,15 +15,15 @@
    * @config {string} msgNumber
    */
   var defaults = {
-    classInvalid: 'input-invalid',
-    classValid  : 'input-valid',
-    classMsg    : 'msg-error',
-
-    msgEmpty    : 'This field is required.',
-    msgEmail    : 'Invalid email address.',
-    msgNumber   : 'Input must be number.',
-    msgExceedMin: 'Minimum number is %s.',
-    msgExceedMax: 'Maximum number is %s.'
+    classInvalid  : 'input-invalid',
+    classValid    : 'input-valid',
+    classMsg      : 'msg-error',
+    msgEmpty      : 'This field is required.',
+    msgEmail      : 'Invalid email address.',
+    msgNumber     : 'Input must be number.',
+    msgExceedMin  : 'Minimum number is %s.',
+    msgExceedMax  : 'Maximum number is %s.',
+    onValidated   : null
   };
 
 
@@ -242,6 +242,7 @@
       var $this   = $(this),
           fields  = $this.find('[required]'),
           isOK    = true,
+          valid   = true,
           focusedField,
           msg;
 
@@ -249,6 +250,8 @@
         if ( !isOK ) {
           evt.preventDefault();
           $this.find('.' + userOpts.classInvalid).eq(0).focus();
+
+          valid = false;
         }
       };
 
@@ -263,6 +266,10 @@
 
       isOK = validateNumeric( fields );
       checkValidationResult();
+
+      if ( valid && $.isFunction(userOpts.onValidated) ) {
+        userOpts.onValidated(evt);
+      }
     };
 
 
