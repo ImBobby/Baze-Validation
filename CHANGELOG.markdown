@@ -1,5 +1,10 @@
 # Changelog
 
+# 1.1.0
+
+* Add `onValidated` callback function #13
+* Ignore disabled input #14
+
 ## 1.0.2
 
 * Fix addMessage function removing existing message [#11](https://github.com/ImBobby/Baze-Validation/pull/11)
