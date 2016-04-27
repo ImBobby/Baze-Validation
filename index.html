@@ -22,13 +22,15 @@
             <h1 class="library-name heading">Baze Validation</h1>
             <p class="library-desc">Baze Validation is a library to run basic form validation</p>
 
-            <a href="https://github.com/ImBobby/Baze-Validation"><small>Github</small></a>
-            &middot;
-            <a href="https://github.com/ImBobby/Baze-Validation/issues"><small>Issues</small></a>
-            &middot;
-            <a href="https://github.com/ImBobby/Baze-Validation/blob/master/CHANGELOG.markdown"><small>Changelog</small></a>
-            <br>
-            <small>Current version: <u>1.0.2</u></small>
+            <div>
+                <a href="https://github.com/ImBobby/Baze-Validation"><small>Github</small></a>
+                &nbsp;
+                <a href="https://github.com/ImBobby/Baze-Validation/issues"><small>Issues</small></a>
+                &nbsp;
+                <a href="https://github.com/ImBobby/Baze-Validation/blob/master/CHANGELOG.markdown"><small>Changelog</small></a>
+                <br>
+                <small>Current version: <u>1.1.0</u></small>
+            </div>
         </div>
     </header>
 
@@ -47,36 +49,46 @@
     </nav>
 
     <main>
-        <section class="section section--white" id="demo">
+        <section class="section" id="demo">
             <div class="container">
-                <h2 class="heading">
-                    Demo
-                    <a class="heading-anchor" href="#demo" aria-hidden="true">&sect;</a>
-                </h2>
+                <div>
+                    <h2 class="heading">
+                        Demo
+                        <a class="heading-anchor" href="#demo" aria-hidden="true">&sect;</a>
+                    </h2>
 
-                <form class="form-demo">
-                    <div class="form-row">
-                        <label for="dUsername">Username <span class="red">*</span></label>
-                        <input class="form-input" id="dUsername" type="text" required>
-                    </div>
-                    <div class="form-row">
-                        <label for="dEmail">Email <span class="red">*</span></label>
-                        <input class="form-input" id="dEmail" type="email" placeholder="name@domain.com" required>
-                    </div>
-                    <div class="form-row">
-                        <label for="dAge">Age <span class="red">*</span></label>
-                        <input class="form-input" id="dAge" type="number" min="18" max="30" placeholder="min 18 max 30" required>
-                    </div>
-                    <div class="form-row">
-                        <label for="dPostal">Postal <span class="red">*</span></label>
-                        <input class="form-input" id="dPostal" type="number" placeholder="number only" required>
-                    </div>
-                    <div class="form-row">
-                        <label for="dBio">Bio <span class="red">*</span></label>
-                        <textarea class="form-input" id="dBio" rows="3" required></textarea>
-                    </div>
-                    <button class="btn btn--primary">Submit</button>
-                </form>
+                    <form class="form-demo block" id="formDemo">
+                        <div class="form-row">
+                            <label for="dUsername">Username <span class="red">*</span></label>
+                            <input class="form-input" id="dUsername" type="text" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="dEmail">Email <span class="red">*</span></label>
+                            <input class="form-input" id="dEmail" type="email" placeholder="name@domain.com" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="dAge">Age <span class="red">*</span></label>
+                            <input class="form-input" id="dAge" type="number" min="18" max="30" placeholder="min 18 max 30" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="dPostal">Postal <span class="red">*</span></label>
+                            <input class="form-input" id="dPostal" type="number" placeholder="number only" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="dBio">Bio <span class="red">*</span></label>
+                            <textarea class="form-input" id="dBio" rows="3" required></textarea>
+                        </div>
+                        <button class="btn btn--primary">Submit</button>
+                    </form>
+                </div>
+
+                <div>
+                    <h3 class="heading">Other examples</h3>
+
+                    <ul>
+                        <li><a href="example-with-checkbox.html">Form with checkbox</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -96,7 +108,7 @@
             </div>
         </section>
 
-        <section class="section section--white" id="install">
+        <section class="section" id="install">
             <div class="container">
                 <h2 class="heading">
                     Install
@@ -163,13 +175,16 @@
     msgEmail        : 'Invalid email address.',
     msgNumber       : 'Input must be number.',
     msgExceedMin    : 'Minimum number is %s.',
-    msgExceedMax    : 'Maximum number is %s.'
+    msgExceedMax    : 'Maximum number is %s.',
+    onValidated     : function (e) {
+        // scary code
+    }
 });
 </code></pre>
             </div>
         </section>
 
-        <section class="section section--white" id="options">
+        <section class="section" id="options">
             <div class="container">
                 <h2 class="heading">
                     Options
@@ -216,6 +231,11 @@
                     <dd>Type: <strong>String</strong></dd>
                     <dd>Default: <strong>Maximum number is %s.</strong></dd>
                     <dd>Description: Text to display if input type number's value is greater than maximum value specified by max attribute. %s is a placeholder to display the maximum value, so you can place it anywhere or even remove it.</dd>
+
+                    <dt>onValidated(Event Object)</dt>
+                    <dd>Type: <strong>Function</strong></dd>
+                    <dd>Default: <strong>null</strong></dd>
+                    <dd>Description: a callback function that fired once the form validated.</dd>
                 </dl>
 
                 <h3 class="heading">Destroy</h3>
@@ -234,10 +254,11 @@
                 </h2>
 
                 <ol>
-                    <li><u>Attribute <strong>novalidate</strong> will be added to &lt;form> element</u> to prevent browser's form validation.</li>
-                    <li>Baze Validation will validate all elements inside &lt;form> <strong>that has required attribute</strong>. Elements without required attribute (optional field) will be ignored.</li>
-                    <li><u>If a field does not pass, Baze Validation will add input-invalid class</u> (customizable) and <u>an error message with class msg-error (customizable) will be added</u> after the element.</li>
+                    <li><u>Attribute <strong>novalidate</strong> will be added to &lt;form> element</u> to prevent browser's default form validation.</li>
+                    <li>Baze Validation will validate all elements inside &lt;form> that has<strong> required attribute</strong> and <strong>is not disabled</strong>. Elements without required attribute (optional field) will be ignored.</li>
+                    <li><u>If a field fail the validation, Baze Validation will add input-invalid class</u> (customizable) and <u>an error message with class msg-error (customizable) will be added</u> <strong>after the element</strong>.</li>
                     <li>If pass, Baze Validation will add input-valid class to the input.</li>
+                    <li>Baze Validation with fire onValidated callback function when all validation pass if any.</li>
                 </ol>
 
                 <h3 class="heading">Styling</h3>
@@ -246,7 +267,7 @@
             </div>
         </section>
 
-        <section class="section section--white" id="browsersSupport">
+        <section class="section" id="browsersSupport">
             <div class="container">
                 <h2 class="heading">
                     Browsers support

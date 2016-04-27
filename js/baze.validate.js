@@ -1,4 +1,4 @@
-/*! Baze Validation v1.0.2 | (c) 2015 @_bobbylie | http://git.io/bxW4 */
+/*! Baze Validation v1.1.0 | (c) 2016 @_bobbylie | http://git.io/bxW4 */
 
 ;(function ( $, window, document, undefined ) {
 
@@ -15,15 +15,15 @@
    * @config {string} msgNumber
    */
   var defaults = {
-    classInvalid: 'input-invalid',
-    classValid  : 'input-valid',
-    classMsg    : 'msg-error',
-
-    msgEmpty    : 'This field is required.',
-    msgEmail    : 'Invalid email address.',
-    msgNumber   : 'Input must be number.',
-    msgExceedMin: 'Minimum number is %s.',
-    msgExceedMax: 'Maximum number is %s.'
+    classInvalid  : 'input-invalid',
+    classValid    : 'input-valid',
+    classMsg      : 'msg-error',
+    msgEmpty      : 'This field is required.',
+    msgEmail      : 'Invalid email address.',
+    msgNumber     : 'Input must be number.',
+    msgExceedMin  : 'Minimum number is %s.',
+    msgExceedMax  : 'Maximum number is %s.',
+    onValidated   : null
   };
 
 
@@ -128,6 +128,8 @@
         var $field  = $(this),
             value   = $field.val();
 
+        if ( this.hasAttribute('disabled') ) return;
+
         if ( value === '' || value === null || $.trim(value) === '' ) {
           $field.addClass( userOpts.classInvalid );
           addMessage( $field, userOpts.msgEmpty );
@@ -159,6 +161,7 @@
              */
             type  = el.getAttribute('type');
 
+        if ( el.hasAttribute('disabled') ) continue;
 
         /**
          * Ignore if input type is not email
@@ -202,6 +205,7 @@
             nMin    = Math.floor(min),
             nMax    = Math.floor(max);
 
+        if ( el.hasAttribute('disabled') ) continue;
 
         /**
          * Ignore if input type is not number
@@ -242,6 +246,7 @@
       var $this   = $(this),
           fields  = $this.find('[required]'),
           isOK    = true,
+          valid   = true,
           focusedField,
           msg;
 
@@ -249,6 +254,8 @@
         if ( !isOK ) {
           evt.preventDefault();
           $this.find('.' + userOpts.classInvalid).eq(0).focus();
+
+          valid = false;
         }
       };
 
@@ -263,6 +270,10 @@
 
       isOK = validateNumeric( fields );
       checkValidationResult();
+
+      if ( valid && $.isFunction(userOpts.onValidated) ) {
+        userOpts.onValidated(evt);
+      }
     };
 
 

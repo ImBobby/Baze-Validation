@@ -5,7 +5,7 @@
 }
 
 html {
-    font: 400 18px/1.6em 'Roboto Condensed', sans-serif;
+    font: 400 16px/1.6em 'Roboto Condensed', sans-serif;
     background: #f5f5f5 url('../img/connected.png');
 }
 
@@ -76,6 +76,10 @@ code {
     font-family: 'Menlo', 'Consolas', 'Courier New', monospace;
 }
 
+.block {
+    margin-bottom: 1.6em;
+}
+
 .container {
     width: 95%;
     max-width: 600px;
@@ -90,7 +94,7 @@ code {
     padding: 4.8em 0 3.2em;
 }
 
-.section--white {
+.section:nth-of-type(odd) {
     background: #fff;
 }
 
@@ -242,6 +246,10 @@ code {
     -webkit-transform: translate(0,0);
         -ms-transform: translate(0,0);
             transform: translate(0,0);
+}
+
+.main-header .container > :last-child {
+    margin-bottom: 0;
 }
 
 .library-name {

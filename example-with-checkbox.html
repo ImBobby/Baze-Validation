@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="description" content="Baze Validation is a library to run basic form validation">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Baze Validation Example - Form with checkbox</title>
+
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/foundation.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <h1 class="library-name heading">Baze Validation</h1>
+            <p class="library-desc">Example form with checkbox</p>
+            <a href="index.html"><small>Back to home</small></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="section">
+            <div class="container">
+
+                <form class="form-demo" id="demoCheckbox">
+                    <div class="form-row">
+                        <label for="dEmail">Email <span class="red">*</span></label>
+                        <input class="form-input" id="dEmail" type="email" placeholder="name@domain.com" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="dPassword">Password <span class="red">*</span></label>
+                        <input class="form-input" id="dPassword" type="password" placeholder="Make a good one" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="dAgree">
+                            <input id="dAgree" type="checkbox">
+                            <span>I agree with the terms and conditions</span>
+                        </label>
+                    </div>
+                    <button class="btn btn--primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <h2>HTML</h2>
+
+<pre><code class="HTML">&lt;form class="form-demo" id="demoCheckbox">
+    &lt;div class="form-row">
+        &lt;label>Email&lt;/label>
+        &lt;input type="email" required>
+    &lt;/div>
+    &lt;div class="form-row">
+        &lt;label>Password&lt;/label>
+        &lt;input type="password" required>
+    &lt;/div>
+    &lt;div class="form-row">
+        &lt;label>
+            &lt;input type="checkbox">
+            &lt;span>I agree with the terms and conditions&lt;/span>
+        &lt;/label>
+    &lt;/div>
+    &lt;button class="btn btn--primary">Submit&lt;/button>
+&lt;/form>
+</code></pre>
+
+                <h2>JS</h2>
+
+<pre><code class="Javascript">$('#demoCheckbox').bazeValidate({
+    onValidated: function (e) {
+        if ( !$('#dAgree').is(':checked') ) {
+            e.preventDefault();
+            alert('You have to check the checkbox');
+        }
+    }
+});
+</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/sprintf.min.js"></script>
+    <script src="js/baze.validate.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="js/demo.js"></script>
+</body>
+</html>

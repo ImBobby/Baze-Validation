@@ -6,10 +6,11 @@ $(function () {
             this.initBazeValidate();
             this.highlight();
             this.nav();
+            this.exampleCheckbox();
         },
 
         initBazeValidate: function () {
-            $('form').bazeValidate();
+            $('#formDemo').bazeValidate();
         },
 
         highlight: function () {
@@ -26,8 +27,18 @@ $(function () {
 
             $navBtn.unbind('click', openNav);
             $navBtn.bind('click', openNav);
-        }
+        },
 
+        exampleCheckbox: function () {
+            $('#demoCheckbox').bazeValidate({
+                onValidated: function (e) {
+                    if ( !$('#dAgree').is(':checked') ) {
+                        e.preventDefault();
+                        alert('You have to check the checkbox');
+                    }
+                }
+            });
+        }
     };
 
     Site.init();       
