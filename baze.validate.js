@@ -128,6 +128,8 @@
         var $field  = $(this),
             value   = $field.val();
 
+        if ( this.hasAttribute('disabled') ) return;
+
         if ( value === '' || value === null || $.trim(value) === '' ) {
           $field.addClass( userOpts.classInvalid );
           addMessage( $field, userOpts.msgEmpty );
@@ -159,6 +161,7 @@
              */
             type  = el.getAttribute('type');
 
+        if ( el.hasAttribute('disabled') ) continue;
 
         /**
          * Ignore if input type is not email
@@ -202,6 +205,7 @@
             nMin    = Math.floor(min),
             nMax    = Math.floor(max);
 
+        if ( el.hasAttribute('disabled') ) continue;
 
         /**
          * Ignore if input type is not number
