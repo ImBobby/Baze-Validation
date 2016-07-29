@@ -1,0 +1,23 @@
+{
+  "name": "baze-validation",
+  "version": "2.0.0",
+  "authors": [
+    "ImBobby <squidz.bee@gmail.com>"
+  ],
+  "description": "Validate your form with ease using Baze Validation",
+  "main": [
+    "dist/baze-validate.js"
+  ],
+  "keywords": [
+    "form",
+    "validation"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "README.markdown",
+    "CHANGELOG.markdown"
+  ]
+}
