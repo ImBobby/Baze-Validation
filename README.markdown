@@ -5,7 +5,7 @@
 
 
 ## Features
-* Validate empty fields (including black space)
+* Validate empty fields (including blank space)
 * Validate email format ([RFC822 specification](http://www.w3.org/Protocols/rfc822/#z8))
 * Validate numeric value with optional minimum and maximum value
 * Accessibility enhancement
@@ -20,10 +20,7 @@ or you can [download the zip file](https://github.com/ImBobby/Baze-Validation/ar
 
 ### Dependencies
 
-Baze Validation depends on 2 libraries:
-- jQuery
-
-So make sure to include those 2 libraries before Baze Validation
+Baze Validation depend on jQuery so make sure to include jQuery before Baze Validation
 
 ```HTML
 <script src="jquery.js"></script>
