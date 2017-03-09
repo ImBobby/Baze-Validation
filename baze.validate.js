@@ -23,6 +23,7 @@
     msgNumber     : 'Input must be number.',
     msgExceedMin  : 'Minimum number is %s.',
     msgExceedMax  : 'Maximum number is %s.',
+    onValidating  : null,
     onValidated   : null
   };
 
@@ -270,6 +271,10 @@
 
       isOK = validateNumeric( fields );
       checkValidationResult();
+
+      if ( $.isFunction(userOpts.onValidating) ) {
+        userOpts.onValidating(evt)
+      }
 
       if ( valid && $.isFunction(userOpts.onValidated) ) {
         userOpts.onValidated(evt);

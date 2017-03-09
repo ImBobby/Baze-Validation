@@ -67,6 +67,7 @@ $('form').bazeValidate({
     msgNumber       : 'Input must be number.',
     msgExceedMin    : 'Minimum number is %s.',
     msgExceedMax    : 'Maximum number is %s.',
+    onValidating    : null,
     onValidated     : null
 });
 ```
@@ -130,10 +131,17 @@ $('form').bazeValidate({
 
 -
 
+#### onValidating(Event Object)
+* Type: **Function**
+* Default: **null**
+* Description: a callback function that fired after the form is validated whether it is valid or invalid.
+
+-
+
 #### onValidated(Event Object)
 * Type: **Function**
 * Default: **null**
-* Description: a callback function that fired once the form validated.
+* Description: a callback function that fired after the form is valid.
 
 
 ### Destroy
@@ -150,7 +158,8 @@ $('form').trigger('bazevalidate.destroy');
 2. Baze Validation will validate all elements inside `<form>` that has `required` attribute and is not disabled. **Elements without `required` attribute (optional field) will be ignored**.
 3. If a field fail the validation, Baze Validation will add `input-invalid` class (customizable) and an error message with class `msg-error` (customizable) will be added after the element.
 4. If pass, Baze Validation will add `input-valid` to the input.
-5. Baze Validation with fire onValidated callback function when all validation pass if any.
+5. Baze Validation will fire onValidating callback function if specified.
+6. Baze Validation will fire onValidated callback function when all validation pass if specified.
 
 
 ### Styling
