@@ -1,4 +1,4 @@
-/*! Baze Validation v1.1.0 | (c) 2016 @_bobbylie | http://git.io/bxW4 */
+/*! Baze Validation v1.2.0 | (c) @_bobbylie | http://git.io/bxW4 */
 
 ;(function ( $, window, document, undefined ) {
 

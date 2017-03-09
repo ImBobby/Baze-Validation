@@ -1,5 +1,10 @@
 # Changelog
 
+# 1.2.0
+
+* Add `onValidating` callback function #15
+* Remove sprintf dependency #12
+
 # 1.1.0
 
 * Add `onValidated` callback function #13
