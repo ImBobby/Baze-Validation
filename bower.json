@@ -21,7 +21,6 @@
     "CHANGELOG.markdown"
   ],
   "dependencies": {
-    "jquery": "~1.11.1",
-    "sprintf": "~1.0.2"
+    "jquery": "~1.11.1"
   }
 }

@@ -226,13 +226,13 @@
           if ( !!min && nValue < nMin ) {
             resetFields( $el );
             $el.addClass( userOpts.classInvalid );
-            addMessage( $el, vsprintf(userOpts.msgExceedMin, [min]));
+            addMessage( $el, userOpts.msgExceedMin.replace(/\%s/g, min));
 
             allIsWell = false;
           } else if ( !!max && nValue > nMax ) {
             resetFields( $el );
             $el.addClass( userOpts.classInvalid );
-            addMessage( $el, vsprintf(userOpts.msgExceedMax, [max]));
+            addMessage( $el, userOpts.msgExceedMax.replace(/\%s/g, max));
 
             allIsWell = false;
           }

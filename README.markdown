@@ -22,13 +22,11 @@ or you can [download the zip file](https://github.com/ImBobby/Baze-Validation/ar
 
 Baze Validation depends on 2 libraries:
 - jQuery
-- [sprintf.js](https://github.com/alexei/sprintf.js) by [Alexei](https://github.com/alexei)
 
 So make sure to include those 2 libraries before Baze Validation
 
 ```HTML
 <script src="jquery.js"></script>
-<script src="sprintf.js"></script>
 <script src="baze.validation.js"></script>
 ```
 
